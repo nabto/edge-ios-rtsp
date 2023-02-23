@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4236EDA4299E6DDA0049A425 /* GStreamer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4236EDA3299E6DDA0049A425 /* GStreamer.framework */; };
+		4236EDA9299E6E440049A425 /* GStreamerBackend.m in Sources */ = {isa = PBXBuildFile; fileRef = 4236EDA5299E6E430049A425 /* GStreamerBackend.m */; };
+		4236EDAA299E6E440049A425 /* gst_ios_init.m in Sources */ = {isa = PBXBuildFile; fileRef = 4236EDA7299E6E430049A425 /* gst_ios_init.m */; };
+		4236EDAC299E71DB0049A425 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4236EDAB299E71DB0049A425 /* AVFoundation.framework */; };
+		4236EDAE299E72210049A425 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4236EDAD299E72210049A425 /* AssetsLibrary.framework */; };
+		4236EDB0299E722D0049A425 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4236EDAF299E722C0049A425 /* AudioToolbox.framework */; };
+		4236EDB2299E72350049A425 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4236EDB1299E72350049A425 /* CoreAudio.framework */; };
+		4236EDB4299E723F0049A425 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4236EDB3299E723F0049A425 /* CoreMedia.framework */; };
+		4236EDB6299E72440049A425 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4236EDB5299E72440049A425 /* CoreVideo.framework */; };
+		4236EDB8299E724E0049A425 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4236EDB7299E724D0049A425 /* VideoToolbox.framework */; };
+		4236EDBA299E72520049A425 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4236EDB9299E72520049A425 /* Metal.framework */; };
+		4236EDBC299E732E0049A425 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4236EDBB299E725E0049A425 /* libiconv.tbd */; };
+		427E92B029A6554F006E8368 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E92AF29A6554F006E8368 /* VideoViewController.swift */; };
+		427E92B129A6554F006E8368 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E92AF29A6554F006E8368 /* VideoViewController.swift */; };
 		6D04A6DB1E3F4C4800DD9F70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D04A6DA1E3F4C4800DD9F70 /* AppDelegate.swift */; };
 		6D04A6DD1E3F4C4800DD9F70 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D04A6DC1E3F4C4800DD9F70 /* OverviewViewController.swift */; };
 		6D04A6E01E3F4C4800DD9F70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D04A6DE1E3F4C4800DD9F70 /* Main.storyboard */; };
@@ -61,6 +75,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4236EDA3299E6DDA0049A425 /* GStreamer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GStreamer.framework; path = ../../Library/Developer/GStreamer/iPhone.sdk/GStreamer.framework; sourceTree = "<group>"; };
+		4236EDA5299E6E430049A425 /* GStreamerBackend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GStreamerBackend.m; sourceTree = "<group>"; };
+		4236EDA6299E6E430049A425 /* gst_ios_init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gst_ios_init.h; sourceTree = "<group>"; };
+		4236EDA7299E6E430049A425 /* gst_ios_init.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = gst_ios_init.m; sourceTree = "<group>"; };
+		4236EDA8299E6E440049A425 /* GStreamerBackend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GStreamerBackend.h; sourceTree = "<group>"; };
+		4236EDAB299E71DB0049A425 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4236EDAD299E72210049A425 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		4236EDAF299E722C0049A425 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		4236EDB1299E72350049A425 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		4236EDB3299E723F0049A425 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		4236EDB5299E72440049A425 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		4236EDB7299E724D0049A425 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		4236EDB9299E72520049A425 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		4236EDBB299E725E0049A425 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		4236EDBE299E97C60049A425 /* GStreamerBackendDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GStreamerBackendDelegate.h; sourceTree = "<group>"; };
+		427E92AF29A6554F006E8368 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		6D04A6D71E3F4C4800DD9F70 /* Nabto Edge Thermostat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nabto Edge Thermostat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D04A6DA1E3F4C4800DD9F70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D04A6DC1E3F4C4800DD9F70 /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
@@ -106,9 +136,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4236EDB2299E72350049A425 /* CoreAudio.framework in Frameworks */,
 				6D04A7551E3F59BF00DD9F70 /* QuartzCore.framework in Frameworks */,
 				6D04A7561E3F59BF00DD9F70 /* UIKit.framework in Frameworks */,
+				4236EDAE299E72210049A425 /* AssetsLibrary.framework in Frameworks */,
+				4236EDBC299E732E0049A425 /* libiconv.tbd in Frameworks */,
+				4236EDB4299E723F0049A425 /* CoreMedia.framework in Frameworks */,
+				4236EDBA299E72520049A425 /* Metal.framework in Frameworks */,
+				4236EDB0299E722D0049A425 /* AudioToolbox.framework in Frameworks */,
+				4236EDAC299E71DB0049A425 /* AVFoundation.framework in Frameworks */,
 				6D04A7481E3F57E900DD9F70 /* Foundation.framework in Frameworks */,
+				4236EDB8299E724E0049A425 /* VideoToolbox.framework in Frameworks */,
+				4236EDA4299E6DDA0049A425 /* GStreamer.framework in Frameworks */,
+				4236EDB6299E72440049A425 /* CoreVideo.framework in Frameworks */,
 				6F328C0716F0266C51790EBC /* Pods_Nabto_Edge_Thermostat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +187,11 @@
 		6D04A6D91E3F4C4800DD9F70 /* NabtoEdgeThermostat */ = {
 			isa = PBXGroup;
 			children = (
+				4236EDA6299E6E430049A425 /* gst_ios_init.h */,
+				4236EDA7299E6E430049A425 /* gst_ios_init.m */,
+				4236EDA8299E6E440049A425 /* GStreamerBackend.h */,
+				4236EDA5299E6E430049A425 /* GStreamerBackend.m */,
+				4236EDBE299E97C60049A425 /* GStreamerBackendDelegate.h */,
 				6DC4A1CF1E40F766005B6CAD /* ViewControllers */,
 				6DC4A1E41E4101D3005B6CAD /* Services */,
 				6D04A6DA1E3F4C4800DD9F70 /* AppDelegate.swift */,
@@ -171,6 +216,16 @@
 		6D04A6FA1E3F50F700DD9F70 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4236EDBB299E725E0049A425 /* libiconv.tbd */,
+				4236EDB9299E72520049A425 /* Metal.framework */,
+				4236EDB7299E724D0049A425 /* VideoToolbox.framework */,
+				4236EDB5299E72440049A425 /* CoreVideo.framework */,
+				4236EDB3299E723F0049A425 /* CoreMedia.framework */,
+				4236EDB1299E72350049A425 /* CoreAudio.framework */,
+				4236EDAF299E722C0049A425 /* AudioToolbox.framework */,
+				4236EDAD299E72210049A425 /* AssetsLibrary.framework */,
+				4236EDAB299E71DB0049A425 /* AVFoundation.framework */,
+				4236EDA3299E6DDA0049A425 /* GStreamer.framework */,
 				6D16D8D71E4963C90093B4B1 /* libnabto_client_api_static.a */,
 				6D16D8D81E4963C90093B4B1 /* libnabto_static_external.a */,
 				6D04A7531E3F59BF00DD9F70 /* QuartzCore.framework */,
@@ -207,6 +262,7 @@
 				E92A91311C62C726F2ECEB44 /* DeviceDetailsViewController.swift */,
 				E92F3664964C147CDB567669 /* EdgeThermostatViewController.swift */,
 				E92C4A9D68545E91636267D8 /* StoryboardHelper.swift */,
+				427E92AF29A6554F006E8368 /* VideoViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -450,6 +506,7 @@
 			files = (
 				D455B17C28A51AA90011FD72 /* PairingConfirmedViewController.swift in Sources */,
 				6DC4A1F41E42633F005B6CAD /* CustomTableViewCells.swift in Sources */,
+				427E92B029A6554F006E8368 /* VideoViewController.swift in Sources */,
 				6D04A6DD1E3F4C4800DD9F70 /* OverviewViewController.swift in Sources */,
 				6D55F38B1E437F7700C88276 /* ProfileTools.swift in Sources */,
 				6DC4A1E11E40F9F1005B6CAD /* PairingViewController.swift in Sources */,
@@ -459,10 +516,12 @@
 				6DC4A1D41E40F823005B6CAD /* HelpViewController.swift in Sources */,
 				E92DFA06F9E1E0BBD1692EC9 /* EdgeConnectionManager.swift in Sources */,
 				E92FC3EBBDC9264942C1A7FB /* AddDeviceViewController.swift in Sources */,
+				4236EDAA299E6E440049A425 /* gst_ios_init.m in Sources */,
 				E920BF4ED2BF593C202BEC73 /* SettingsViewController.swift in Sources */,
 				E923FA3A83FCB313501BA333 /* DeviceDetailsViewController.swift in Sources */,
 				E92E8FF5FC51BC5DF6F94B35 /* EdgeThermostatViewController.swift in Sources */,
 				E925A99A044E21183A45F4E3 /* StoryboardHelper.swift in Sources */,
+				4236EDA9299E6E440049A425 /* GStreamerBackend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +534,7 @@
 				6D16D89D1E4944F90093B4B1 /* BookmarkManager.swift in Sources */,
 				6D04A6F01E3F4C4800DD9F70 /* OtherTests.swift in Sources */,
 				6D95FF271E49FC3800FB070F /* ProfileTools.swift in Sources */,
+				427E92B129A6554F006E8368 /* VideoViewController.swift in Sources */,
 				E92590D603F5D8FABBE76426 /* EdgeManagerTests.swift in Sources */,
 				E92B3EED654E44CDD80E089D /* EdgeConnectionManager.swift in Sources */,
 				E929A104DC701DA1AE31ED84 /* AddDeviceViewController.swift in Sources */,
@@ -627,7 +687,23 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = E55K8RCV2E;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CBORCoding\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Half\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MarqueeLabel\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/NotificationBannerSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit\"",
+					"\"${PODS_ROOT}/NabtoEdgeClientSwift\"",
+					"\"${PODS_ROOT}/NabtoEdgeIamUtil\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/NabtoEdgeClientSwift\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/NabtoEdgeIamUtil\"",
+					"$(HOME)/Library/Developer/GStreamer/iPhone.sdk",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(HOME)/Library/Developer/GStreamer/iPhone.sdk/GStreamer.framework/Headers",
+				);
 				INFOPLIST_FILE = NabtoEdgeThermostat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -637,11 +713,15 @@
 					"$(PROJECT_DIR)/Libs/nabto/ios/lib",
 				);
 				MARKETING_VERSION = 1.0.2;
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lc++",
+					"-lresolv",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nabto.edge.thermostat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -656,7 +736,23 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = E55K8RCV2E;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CBORCoding\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Half\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MarqueeLabel\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/NotificationBannerSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit\"",
+					"\"${PODS_ROOT}/NabtoEdgeClientSwift\"",
+					"\"${PODS_ROOT}/NabtoEdgeIamUtil\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/NabtoEdgeClientSwift\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/NabtoEdgeIamUtil\"",
+					"$(HOME)/Library/Developer/GStreamer/iPhone.sdk",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(HOME)/Library/Developer/GStreamer/iPhone.sdk/GStreamer.framework/Headers",
+				);
 				INFOPLIST_FILE = NabtoEdgeThermostat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -666,11 +762,15 @@
 					"$(PROJECT_DIR)/Libs/nabto/ios/lib",
 				);
 				MARKETING_VERSION = 1.0.2;
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lc++",
+					"-lresolv",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nabto.edge.thermostat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

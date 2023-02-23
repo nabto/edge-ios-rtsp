@@ -8,6 +8,7 @@
 
 import UIKit
 import NotificationBannerSwift
+import OSLog
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,11 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var starting = true
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-//        let domain = Bundle.main.bundleIdentifier!
-//        UserDefaults.standard.removePersistentDomain(forName: domain)
-//        UserDefaults.standard.synchronize()
-
+        gst_ios_init()
+        let logger = Logger()
+        logger.info("GStreamer initialized with version \(GStreamerBackend().getGStreamerVersion())")
         return true
     }
 

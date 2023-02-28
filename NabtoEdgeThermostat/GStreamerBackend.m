@@ -7,7 +7,6 @@ GST_DEBUG_CATEGORY(debug_category);
 #define GST_CAT_DEFAULT debug_category
 
 @interface GStreamerBackend()
--(void)setUIMessage:(gchar*) message;
 -(void)app_main;
 -(void)check_initialization_complete;
 @end
@@ -16,12 +15,12 @@ GST_DEBUG_CATEGORY(debug_category);
 {
     id ui_delegate;
     GstElement* pipeline;
+    GstElement* video_sink;
     GMainContext* context;
     GMainLoop* main_loop;
     gboolean initialized;
     
-    GstElement* video_sink;
-    UIView* video_view;
+    __weak UIView* video_view;
     GstState state;
     GstState target_state;
     gint64 duration;
@@ -54,7 +53,6 @@ GST_DEBUG_CATEGORY(debug_category);
     if (main_loop)
     {
         g_main_loop_quit(main_loop);
-        main_loop = NULL;
     }
 }
 
@@ -74,15 +72,7 @@ GST_DEBUG_CATEGORY(debug_category);
 {
     const char* cstr = [uri UTF8String];
     g_object_set(pipeline, "uri", cstr, NULL);
-}
-
--(void)setUIMessage:(gchar*)message
-{
-    NSString* string = [NSString stringWithUTF8String:message];
-    if (ui_delegate && [ui_delegate respondsToSelector:@selector(gstreamerSetUIMessage:)])
-    {
-        [ui_delegate gstreamerSetUIMessage:string];
-    }
+    GST_DEBUG("URI set to %s", cstr);
 }
 
 static void seek(GStreamerBackend* self, gint64 desired_position)
@@ -166,10 +156,9 @@ static void buffering_callback(GstBus* bus, GstMessage* msg, GStreamerBackend* s
 
 -(void)check_initialization_complete
 {
-    if (!initialized && video_view && main_loop)
+    if (!initialized && main_loop)
     {
         GST_DEBUG("Initialization complete, notifying application.");
-        gst_video_overlay_set_window_handle(GST_VIDEO_OVERLAY(pipeline), (guintptr)(id)video_view);
         if (ui_delegate && [ui_delegate respondsToSelector:@selector(gstreamerInitialized)])
         {
             [ui_delegate gstreamerInitialized];
@@ -203,6 +192,13 @@ static void buffering_callback(GstBus* bus, GstMessage* msg, GStreamerBackend* s
     target_state = GST_STATE_READY;
     gst_element_set_state(pipeline, target_state);
     
+    video_sink = gst_bin_get_by_interface(GST_BIN(pipeline), GST_TYPE_VIDEO_OVERLAY);
+    if (!video_sink) {
+        GST_ERROR ("Could not retrieve video sink");
+        return;
+    }
+    gst_video_overlay_set_window_handle(GST_VIDEO_OVERLAY(video_sink), (guintptr) (id) video_view);
+    
     bus = gst_element_get_bus(pipeline);
     bus_source = gst_bus_create_watch(bus);
     g_source_set_callback(bus_source, (GSourceFunc)gst_bus_async_signal_func, NULL, NULL);
@@ -229,6 +225,7 @@ static void buffering_callback(GstBus* bus, GstMessage* msg, GStreamerBackend* s
     g_main_context_unref(context);
     gst_element_set_state(pipeline, GST_STATE_NULL);
     gst_object_unref (pipeline);
+    pipeline = NULL;
 }
 
 -(NSString*) getGStreamerVersion

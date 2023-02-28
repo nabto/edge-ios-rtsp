@@ -27,7 +27,7 @@ class StoryboardHelper {
         if device.modelName != demoProductType {
             NSLog("Warning: Target device is of type \(device.modelName ?? "(n/a)"), this app only supports \(demoProductType)")
         }
-        let controller: DeviceDetailsViewController? = getViewController(id: "EdgeThermostatViewController") as! EdgeThermostatViewController
+        let controller: DeviceDetailsViewController? = getViewController(id: "EdgeThermostatViewController") as! EdgeDeviceViewController
         controller?.device = device
         return controller
     }

@@ -11,15 +11,9 @@ import UIKit
 
 class VideoViewController: UIViewController, GStreamerBackendDelegate
 {
-    private var videoView: UIView!
-    private var gst: GStreamerBackend!
+    private var videoView = UIView()
+    private var gst: GStreamerBackend?
     private var uri: String?
-    
-    convenience init() {
-        self.init(nibName:nil, bundle:nil)
-        self.videoView = UIView()
-        self.gst = GStreamerBackend(self, videoView: self.videoView)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +30,6 @@ class VideoViewController: UIViewController, GStreamerBackendDelegate
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
-        
-        self.view.addSubview(self.videoView)
-        self.videoView.translatesAutoresizingMaskIntoConstraints = false
-        self.videoView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
-        self.videoView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
-        self.videoView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
-        self.videoView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,8 +43,8 @@ class VideoViewController: UIViewController, GStreamerBackendDelegate
     }
     
     @objc func appWillMoveToForeground() {
-        if uri != nil {
-            gst?.play()
+        if let uri = uri {
+            setUri(uri)
         }
     }
     
@@ -66,11 +53,6 @@ class VideoViewController: UIViewController, GStreamerBackendDelegate
             gst?.setUri(uri)
             gst?.play()
         }
-    }
-    
-    // @TODO: Delete or do something else with this
-    func gstreamerSetUIMessage(_ message: String) {
-        print("gstreamerSetUIMessage: \(message)")
     }
     
     func pause() {
@@ -83,7 +65,17 @@ class VideoViewController: UIViewController, GStreamerBackendDelegate
     
     func setUri(_ newUri: String) {
         uri = newUri
-        gst?.setUri(newUri)
-        gst?.play()
+        
+        videoView.removeFromSuperview()
+        videoView = UIView()
+        view.addSubview(videoView)
+        self.videoView.translatesAutoresizingMaskIntoConstraints = false
+        self.videoView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
+        self.videoView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        self.videoView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
+        self.videoView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
+        
+        gst?.destroy()
+        gst = GStreamerBackend(self, videoView: videoView)
     }
 }

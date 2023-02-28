@@ -52,13 +52,13 @@
 		E924551915F078D5573D2794 /* PairingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC4A1E01E40F9F1005B6CAD /* PairingViewController.swift */; };
 		E92590D603F5D8FABBE76426 /* EdgeManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92ABEF8BBC6C0A9BC56081D /* EdgeManagerTests.swift */; };
 		E925A99A044E21183A45F4E3 /* StoryboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C4A9D68545E91636267D8 /* StoryboardHelper.swift */; };
-		E9296EB40EB6A206D1D7BD5C /* EdgeThermostatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F3664964C147CDB567669 /* EdgeThermostatViewController.swift */; };
+		E9296EB40EB6A206D1D7BD5C /* EdgeDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F3664964C147CDB567669 /* EdgeDeviceViewController.swift */; };
 		E929A104DC701DA1AE31ED84 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9272A38B76AF9CE5C3FE8CF /* AddDeviceViewController.swift */; };
 		E92A38C0D6987C838BE90500 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC4A1D31E40F823005B6CAD /* HelpViewController.swift */; };
 		E92B3EED654E44CDD80E089D /* EdgeConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9223BABCA33CFC89FFAB851 /* EdgeConnectionManager.swift */; };
 		E92C62AAB6F61B78FE4E571A /* StoryboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C4A9D68545E91636267D8 /* StoryboardHelper.swift */; };
 		E92DFA06F9E1E0BBD1692EC9 /* EdgeConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9223BABCA33CFC89FFAB851 /* EdgeConnectionManager.swift */; };
-		E92E8FF5FC51BC5DF6F94B35 /* EdgeThermostatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F3664964C147CDB567669 /* EdgeThermostatViewController.swift */; };
+		E92E8FF5FC51BC5DF6F94B35 /* EdgeDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92F3664964C147CDB567669 /* EdgeDeviceViewController.swift */; };
 		E92EFE84DCB7E34F1631EA62 /* DeviceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92A91311C62C726F2ECEB44 /* DeviceDetailsViewController.swift */; };
 		E92F9082DBA9B75261176A39 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D04A6DC1E3F4C4800DD9F70 /* OverviewViewController.swift */; };
 		E92FC3EBBDC9264942C1A7FB /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9272A38B76AF9CE5C3FE8CF /* AddDeviceViewController.swift */; };
@@ -127,7 +127,7 @@
 		E92ABEF8BBC6C0A9BC56081D /* EdgeManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeManagerTests.swift; sourceTree = "<group>"; };
 		E92C4A9D68545E91636267D8 /* StoryboardHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardHelper.swift; sourceTree = "<group>"; };
 		E92CFE5D0CBAE893C601FF2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		E92F3664964C147CDB567669 /* EdgeThermostatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeThermostatViewController.swift; sourceTree = "<group>"; };
+		E92F3664964C147CDB567669 /* EdgeDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeDeviceViewController.swift; sourceTree = "<group>"; };
 		ED871FBED8ECCCC43207D0B6 /* Pods-Nabto Edge Thermostat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nabto Edge Thermostat.debug.xcconfig"; path = "Target Support Files/Pods-Nabto Edge Thermostat/Pods-Nabto Edge Thermostat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -260,7 +260,7 @@
 				E9272A38B76AF9CE5C3FE8CF /* AddDeviceViewController.swift */,
 				E92CFE5D0CBAE893C601FF2F /* SettingsViewController.swift */,
 				E92A91311C62C726F2ECEB44 /* DeviceDetailsViewController.swift */,
-				E92F3664964C147CDB567669 /* EdgeThermostatViewController.swift */,
+				E92F3664964C147CDB567669 /* EdgeDeviceViewController.swift */,
 				E92C4A9D68545E91636267D8 /* StoryboardHelper.swift */,
 				427E92AF29A6554F006E8368 /* VideoViewController.swift */,
 			);
@@ -402,6 +402,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-NabtoEdgeThermostatTests/Pods-NabtoEdgeThermostatTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CBORCoding/CBORCoding.framework",
 				"${BUILT_PRODUCTS_DIR}/Half/Half.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -412,6 +413,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CBORCoding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Half.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -476,6 +478,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Nabto Edge Thermostat/Pods-Nabto Edge Thermostat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CBORCoding/CBORCoding.framework",
 				"${BUILT_PRODUCTS_DIR}/Half/Half.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -486,6 +489,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CBORCoding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Half.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -519,7 +523,7 @@
 				4236EDAA299E6E440049A425 /* gst_ios_init.m in Sources */,
 				E920BF4ED2BF593C202BEC73 /* SettingsViewController.swift in Sources */,
 				E923FA3A83FCB313501BA333 /* DeviceDetailsViewController.swift in Sources */,
-				E92E8FF5FC51BC5DF6F94B35 /* EdgeThermostatViewController.swift in Sources */,
+				E92E8FF5FC51BC5DF6F94B35 /* EdgeDeviceViewController.swift in Sources */,
 				E925A99A044E21183A45F4E3 /* StoryboardHelper.swift in Sources */,
 				4236EDA9299E6E440049A425 /* GStreamerBackend.m in Sources */,
 			);
@@ -546,7 +550,7 @@
 				E92A38C0D6987C838BE90500 /* HelpViewController.swift in Sources */,
 				E922F5AB9231ED6A6EA7A90B /* SettingsViewController.swift in Sources */,
 				E92EFE84DCB7E34F1631EA62 /* DeviceDetailsViewController.swift in Sources */,
-				E9296EB40EB6A206D1D7BD5C /* EdgeThermostatViewController.swift in Sources */,
+				E9296EB40EB6A206D1D7BD5C /* EdgeDeviceViewController.swift in Sources */,
 				E92C62AAB6F61B78FE4E571A /* StoryboardHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

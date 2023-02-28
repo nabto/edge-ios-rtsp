@@ -15,6 +15,7 @@ def common
   pod 'NabtoEdgeClientSwift', '3.0.4'
   pod 'NabtoEdgeIamUtil'
   pod 'NotificationBannerSwift', '~> 3.0.0'
+  pod 'IQKeyboardManagerSwift'
 end
 
 target 'Nabto Edge Thermostat' do

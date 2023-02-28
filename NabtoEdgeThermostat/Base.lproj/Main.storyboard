@@ -678,7 +678,7 @@
         <!--ACME Heater-->
         <scene sceneID="Xpn-Dh-Sju">
             <objects>
-                <viewController storyboardIdentifier="EdgeThermostatViewController" title="ACME Heater" id="XEm-96-IUG" customClass="EdgeThermostatViewController" customModule="Nabto_Edge_Thermostat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EdgeThermostatViewController" title="ACME Heater" id="XEm-96-IUG" customClass="EdgeDeviceViewController" customModule="Nabto_Edge_Thermostat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H8o-od-ao2"/>
                         <viewControllerLayoutGuide type="bottom" id="W6v-6E-quU"/>

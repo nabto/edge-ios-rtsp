@@ -8,6 +8,7 @@
 
 import UIKit
 import NotificationBannerSwift
+import IQKeyboardManagerSwift
 import OSLog
 
 @UIApplicationMain
@@ -17,8 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var starting = true
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        gst_ios_init()
         let logger = Logger()
+        
+        gst_ios_init()
+        IQKeyboardManager.shared.enable = true
         logger.info("GStreamer initialized with version \(GStreamerBackend().getGStreamerVersion())")
         return true
     }

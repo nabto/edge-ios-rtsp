@@ -13,9 +13,7 @@ import NabtoEdgeClient
 import NabtoEdgeIamUtil
 import OSLog
 
-// MARK: - EdgeThermostatViewController class
-
-class EdgeThermostatViewController: DeviceDetailsViewController {
+class EdgeDeviceViewController: DeviceDetailsViewController {
     private let defaultVideoPath = "/video"
     
     private let cborEncoder: CBOREncoder = CBOREncoder()
@@ -123,30 +121,33 @@ class EdgeThermostatViewController: DeviceDetailsViewController {
     
     @IBAction func refreshVideoTap(_ sender: Any) {
         if (videoPathTextField.text != nil && !videoPathTextField.text!.isEmpty) {
-            do {
-                try startVideo(userPath: videoPathTextField.text!)
-            } catch {
-                // @TODO: Log
-            }
+            startVideo(userPath: videoPathTextField.text!)
         }
     }
     
-    private func startVideo(userPath: String? = nil) throws {
-        if let tunnel = self.tunnel, let serviceInfo = self.serviceInfo {
-            let port = try tunnel.getLocalPort()
+    private func constructRtspUri(auth: String, port: UInt16, path: String) -> String {
+        var cleanedPath = path.trimmingCharacters(in: .whitespacesAndNewlines)
+        if (!cleanedPath.hasPrefix("/")) {
+            cleanedPath.insert("/", at: cleanedPath.startIndex)
+        }
+        return "rtsp://\(auth)127.0.0.1:\(port)\(cleanedPath)"
+    }
+    
+    private func startVideo(userPath: String? = nil) {
+        if let tunnel = self.tunnel, let serviceInfo = self.serviceInfo, let port = try? tunnel.getLocalPort() {
             let path = userPath ?? serviceInfo.metadata["rtsp-path"] ?? defaultVideoPath
             
             let username = serviceInfo.metadata["rtsp-username"] ?? ""
             let password = serviceInfo.metadata["rtsp-password"] ?? ""
             let auth = username.isEmpty ? "" : "\(username):\(password)@"
             
-            let uri = "rtsp://\(auth)127.0.0.1:\(port)\(path)"
+            let uri = constructRtspUri(auth: auth, port: port, path: path)
             DispatchQueue.main.async {
                 self.videoPathTextField.text = path
                 self.videoViewController.setUri(uri)
             }
         } else {
-            throw NabtoEdgeClientError.FAILED_WITH_DETAIL(detail: "TcpTunnel is nil!")
+            showDeviceErrorMsg("TcpTunnel is not open, failed to start video stream!")
         }
         self.busy = false
     }
@@ -168,11 +169,15 @@ class EdgeThermostatViewController: DeviceDetailsViewController {
             
             tunnel = try conn.createTcpTunnel()
             tunnel?.openAsync(service: "rtsp", localPort: 0, closure: { _ in
-                do { try self.startVideo() } catch { /* @TODO: Log */ }
+                self.startVideo()
             })
         } catch {
             handleDeviceError(error)
         }
+    }
+    
+    private func startTunnelOnMainThread() {
+        DispatchQueue.main.async { self.startTunnel() }
     }
 
     override func viewDidLoad() {
@@ -185,7 +190,8 @@ class EdgeThermostatViewController: DeviceDetailsViewController {
         videoViewController.view.leftAnchor.constraint(equalTo: self.videoView.leftAnchor, constant: 0).isActive = true
         videoViewController.view.rightAnchor.constraint(equalTo: self.videoView.rightAnchor, constant: 0).isActive = true
         
-        DispatchQueue.main.async { self.startTunnel() }
+        videoPathTextField.autocorrectionType = .no
+        startTunnelOnMainThread()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -200,29 +206,41 @@ class EdgeThermostatViewController: DeviceDetailsViewController {
                 .removeObserver(self, name: NSNotification.Name(EdgeConnectionManager.eventNameNoNetwork), object: nil)
         NotificationCenter.default
                 .removeObserver(self, name: NSNotification.Name(EdgeConnectionManager.eventNameNetworkAvailable), object: nil)
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default
-                .addObserver(self,
-                        selector: #selector(connectionClosed),
-                        name: NSNotification.Name (EdgeConnectionManager.eventNameConnectionClosed),
-                        object: nil)
-        NotificationCenter.default
-                .addObserver(self,
-                        selector: #selector(networkLost),
-                        name: NSNotification.Name (EdgeConnectionManager.eventNameNoNetwork),
-                        object: nil)
-        NotificationCenter.default
-                .addObserver(self,
-                        selector: #selector(networkAvailable),
-                        name: NSNotification.Name (EdgeConnectionManager.eventNameNetworkAvailable),
-                        object: nil)
+        let nc = NotificationCenter.default
+        nc.addObserver(self,
+                       selector: #selector(connectionClosed),
+                       name: NSNotification.Name (EdgeConnectionManager.eventNameConnectionClosed),
+                       object: nil)
+        nc.addObserver(self,
+                       selector: #selector(networkLost),
+                       name: NSNotification.Name (EdgeConnectionManager.eventNameNoNetwork),
+                       object: nil)
+        nc.addObserver(self,
+                       selector: #selector(networkAvailable),
+                       name: NSNotification.Name (EdgeConnectionManager.eventNameNetworkAvailable),
+                       object: nil)
+        nc.addObserver(self,
+                       selector: #selector(appMovedToBackground),
+                       name: UIApplication.willResignActiveNotification,
+                       object: nil)
+        nc.addObserver(self,
+                       selector: #selector(appWillMoveToForeground),
+                       name: UIApplication.willEnterForegroundNotification,
+                       object: nil)
     }
 
     // MARK: - Reachability callbacks
+    
+    @objc func appMovedToBackground() {
+    }
+    
+    @objc func appWillMoveToForeground() {
+        startTunnelOnMainThread()
+    }
 
     @objc func connectionClosed(_ notification: Notification) {
         if notification.object is Bookmark {

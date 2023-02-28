@@ -1,8 +1,12 @@
-# Native iOS Nabto Edge Thermostat Control App
+# Native iOS Nabto Edge Video Control App
 
-Full example application showing how to control a Nabto Edge enabled thermostat device using the Nabto Edge Client SDK for iOS.
+Full example application showing how to display an RTSP stream from a Nabto Edge enabled device using the Nabto Edge Client SDK for iOS.
 
-Precompiled version is available for download from the App Store as described in the [guide on docs.nabto.com](https://docs.nabto.com/developer/guides/platforms/ios/thermostat.html).
+Precompiled version is not yet available.
+
+## Prerequisites
+
+You must download and install GStreamer package. Choose a version from <https://gstreamer.freedesktop.org/data/pkg/ios/>. The latest version that's been verified to work with this app is 1.22.0. GStreamer should by default be installed to `~/Library/Developer/GStreamer/iPhone.sdk`.
 
 ## Building
 

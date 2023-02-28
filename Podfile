@@ -18,10 +18,10 @@ def common
   pod 'IQKeyboardManagerSwift'
 end
 
-target 'Nabto Edge Thermostat' do
+target 'Nabto Edge Video' do
   common
 end
 
-target 'NabtoEdgeThermostatTests' do
+target 'NabtoEdgeVideoTests' do
   common
 end

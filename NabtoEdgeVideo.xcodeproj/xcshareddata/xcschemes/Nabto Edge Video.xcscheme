@@ -15,9 +15,23 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6D04A6D61E3F4C4800DD9F70"
-               BuildableName = "Nabto Edge Thermostat.app"
-               BlueprintName = "Nabto Edge Thermostat"
-               ReferencedContainer = "container:NabtoEdgeThermostat.xcodeproj">
+               BuildableName = "Nabto Edge Video.app"
+               BlueprintName = "Nabto Edge Video"
+               ReferencedContainer = "container:NabtoEdgeVideo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6D04A6EA1E3F4C4800DD9F70"
+               BuildableName = "NabtoEdgeVideoTests.xctest"
+               BlueprintName = "NabtoEdgeVideoTests"
+               ReferencedContainer = "container:NabtoEdgeVideo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,16 +42,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6D04A6EA1E3F4C4800DD9F70"
-               BuildableName = "NabtoEdgeThermostatTests.xctest"
-               BlueprintName = "NabtoEdgeThermostatTests"
-               ReferencedContainer = "container:NabtoEdgeThermostat.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -55,9 +59,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6D04A6D61E3F4C4800DD9F70"
-            BuildableName = "Nabto Edge Thermostat.app"
-            BlueprintName = "Nabto Edge Thermostat"
-            ReferencedContainer = "container:NabtoEdgeThermostat.xcodeproj">
+            BuildableName = "Nabto Edge Video.app"
+            BlueprintName = "Nabto Edge Video"
+            ReferencedContainer = "container:NabtoEdgeVideo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -67,16 +71,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6D04A6D61E3F4C4800DD9F70"
-            BuildableName = "Nabto Edge Thermostat.app"
-            BlueprintName = "Nabto Edge Thermostat"
-            ReferencedContainer = "container:NabtoEdgeThermostat.xcodeproj">
+            BuildableName = "Nabto Edge Video.app"
+            BlueprintName = "Nabto Edge Video"
+            ReferencedContainer = "container:NabtoEdgeVideo.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

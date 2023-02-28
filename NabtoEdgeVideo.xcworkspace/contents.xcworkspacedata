@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:NabtoEdgeThermostat.xcodeproj">
+      location = "group:/Users/as/Workspace/thermostat-demo-ios/NabtoEdgeVideo.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NabtoEdgeVideo.xcodeproj">
    </FileRef>
 </Workspace>

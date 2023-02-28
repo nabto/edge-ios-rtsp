@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E19C94EAFE09EF3FDEDDCC6 /* Pods_NabtoEdgeVideoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E035B3E47336C0732A412330 /* Pods_NabtoEdgeVideoTests.framework */; };
 		4236EDA4299E6DDA0049A425 /* GStreamer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4236EDA3299E6DDA0049A425 /* GStreamer.framework */; };
 		4236EDA9299E6E440049A425 /* GStreamerBackend.m in Sources */ = {isa = PBXBuildFile; fileRef = 4236EDA5299E6E430049A425 /* GStreamerBackend.m */; };
 		4236EDAA299E6E440049A425 /* gst_ios_init.m in Sources */ = {isa = PBXBuildFile; fileRef = 4236EDA7299E6E430049A425 /* gst_ios_init.m */; };
@@ -40,8 +41,7 @@
 		6DC4A1DA1E40F8CB005B6CAD /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC4A1D91E40F8CB005B6CAD /* DiscoverViewController.swift */; };
 		6DC4A1E11E40F9F1005B6CAD /* PairingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC4A1E01E40F9F1005B6CAD /* PairingViewController.swift */; };
 		6DC4A1F41E42633F005B6CAD /* CustomTableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC4A1F31E42633F005B6CAD /* CustomTableViewCells.swift */; };
-		6F328C0716F0266C51790EBC /* Pods_Nabto_Edge_Thermostat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6D6D3AD50316EEC98D7703 /* Pods_Nabto_Edge_Thermostat.framework */; };
-		8DEE6F45E07F2E76004412B1 /* Pods_NabtoEdgeThermostatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA16AADA6F490878CA2799D /* Pods_NabtoEdgeThermostatTests.framework */; };
+		A7ACA9306BDCF60FDAAB1935 /* Pods_Nabto_Edge_Video.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC1E2B4C8FFDFF46300D1A67 /* Pods_Nabto_Edge_Video.framework */; };
 		D455B17C28A51AA90011FD72 /* PairingConfirmedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D455B17B28A51AA90011FD72 /* PairingConfirmedViewController.swift */; };
 		E920BF4ED2BF593C202BEC73 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CFE5D0CBAE893C601FF2F /* SettingsViewController.swift */; };
 		E920D288C89CD29330CB4CD9 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC4A1D91E40F8CB005B6CAD /* DiscoverViewController.swift */; };
@@ -75,6 +75,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17C5B6A03D96C64591FABFF2 /* Pods-NabtoEdgeVideoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NabtoEdgeVideoTests.release.xcconfig"; path = "Target Support Files/Pods-NabtoEdgeVideoTests/Pods-NabtoEdgeVideoTests.release.xcconfig"; sourceTree = "<group>"; };
+		233B5F640B59BD39EE484DE7 /* Pods-Nabto Edge Video.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nabto Edge Video.debug.xcconfig"; path = "Target Support Files/Pods-Nabto Edge Video/Pods-Nabto Edge Video.debug.xcconfig"; sourceTree = "<group>"; };
 		4236EDA3299E6DDA0049A425 /* GStreamer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GStreamer.framework; path = ../../Library/Developer/GStreamer/iPhone.sdk/GStreamer.framework; sourceTree = "<group>"; };
 		4236EDA5299E6E430049A425 /* GStreamerBackend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GStreamerBackend.m; sourceTree = "<group>"; };
 		4236EDA6299E6E430049A425 /* gst_ios_init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gst_ios_init.h; sourceTree = "<group>"; };
@@ -91,17 +93,17 @@
 		4236EDBB299E725E0049A425 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		4236EDBE299E97C60049A425 /* GStreamerBackendDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GStreamerBackendDelegate.h; sourceTree = "<group>"; };
 		427E92AF29A6554F006E8368 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
-		6D04A6D71E3F4C4800DD9F70 /* Nabto Edge Thermostat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nabto Edge Thermostat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D04A6D71E3F4C4800DD9F70 /* Nabto Edge Video.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nabto Edge Video.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D04A6DA1E3F4C4800DD9F70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D04A6DC1E3F4C4800DD9F70 /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		6D04A6DF1E3F4C4800DD9F70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6D04A6E11E3F4C4800DD9F70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D04A6E41E3F4C4800DD9F70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D04A6E61E3F4C4800DD9F70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D04A6EB1E3F4C4800DD9F70 /* NabtoEdgeThermostatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NabtoEdgeThermostatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D04A6EB1E3F4C4800DD9F70 /* NabtoEdgeVideoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NabtoEdgeVideoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D04A6EF1E3F4C4800DD9F70 /* OtherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTests.swift; sourceTree = "<group>"; };
 		6D04A6F11E3F4C4800DD9F70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D04A70B1E3F53C900DD9F70 /* NabtoEdgeThermostat-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NabtoEdgeThermostat-Bridging-Header.h"; sourceTree = "<group>"; };
+		6D04A70B1E3F53C900DD9F70 /* NabtoEdgeVideo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NabtoEdgeVideo-Bridging-Header.h"; sourceTree = "<group>"; };
 		6D04A7471E3F57E900DD9F70 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6D04A7531E3F59BF00DD9F70 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6D04A7541E3F59BF00DD9F70 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -117,10 +119,11 @@
 		6DC4A1E01E40F9F1005B6CAD /* PairingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairingViewController.swift; sourceTree = "<group>"; };
 		6DC4A1F31E42633F005B6CAD /* CustomTableViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCells.swift; sourceTree = "<group>"; };
 		838A1E4147C7D2BE437766D2 /* Pods-NabtoEdgeThermostatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NabtoEdgeThermostatTests.debug.xcconfig"; path = "Target Support Files/Pods-NabtoEdgeThermostatTests/Pods-NabtoEdgeThermostatTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8CA16AADA6F490878CA2799D /* Pods_NabtoEdgeThermostatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NabtoEdgeThermostatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E6D6D3AD50316EEC98D7703 /* Pods_Nabto_Edge_Thermostat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nabto_Edge_Thermostat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AC09F744A08DDB5C556243A /* Pods-Nabto Edge Video.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nabto Edge Video.release.xcconfig"; path = "Target Support Files/Pods-Nabto Edge Video/Pods-Nabto Edge Video.release.xcconfig"; sourceTree = "<group>"; };
+		CC1E2B4C8FFDFF46300D1A67 /* Pods_Nabto_Edge_Video.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nabto_Edge_Video.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D455B17B28A51AA90011FD72 /* PairingConfirmedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingConfirmedViewController.swift; sourceTree = "<group>"; };
 		D92CAACD2C0780E34FCC36E6 /* Pods-NabtoEdgeThermostatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NabtoEdgeThermostatTests.release.xcconfig"; path = "Target Support Files/Pods-NabtoEdgeThermostatTests/Pods-NabtoEdgeThermostatTests.release.xcconfig"; sourceTree = "<group>"; };
+		E035B3E47336C0732A412330 /* Pods_NabtoEdgeVideoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NabtoEdgeVideoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9223BABCA33CFC89FFAB851 /* EdgeConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeConnectionManager.swift; sourceTree = "<group>"; };
 		E9272A38B76AF9CE5C3FE8CF /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
 		E92A91311C62C726F2ECEB44 /* DeviceDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceDetailsViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 		E92CFE5D0CBAE893C601FF2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E92F3664964C147CDB567669 /* EdgeDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeDeviceViewController.swift; sourceTree = "<group>"; };
 		ED871FBED8ECCCC43207D0B6 /* Pods-Nabto Edge Thermostat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nabto Edge Thermostat.debug.xcconfig"; path = "Target Support Files/Pods-Nabto Edge Thermostat/Pods-Nabto Edge Thermostat.debug.xcconfig"; sourceTree = "<group>"; };
+		F984A19CDE0E8A06E6CB5C91 /* Pods-NabtoEdgeVideoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NabtoEdgeVideoTests.debug.xcconfig"; path = "Target Support Files/Pods-NabtoEdgeVideoTests/Pods-NabtoEdgeVideoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +153,7 @@
 				4236EDB8299E724E0049A425 /* VideoToolbox.framework in Frameworks */,
 				4236EDA4299E6DDA0049A425 /* GStreamer.framework in Frameworks */,
 				4236EDB6299E72440049A425 /* CoreVideo.framework in Frameworks */,
-				6F328C0716F0266C51790EBC /* Pods_Nabto_Edge_Thermostat.framework in Frameworks */,
+				A7ACA9306BDCF60FDAAB1935 /* Pods_Nabto_Edge_Video.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DEE6F45E07F2E76004412B1 /* Pods_NabtoEdgeThermostatTests.framework in Frameworks */,
+				3E19C94EAFE09EF3FDEDDCC6 /* Pods_NabtoEdgeVideoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,8 +171,8 @@
 		6D04A6CE1E3F4C4800DD9F70 = {
 			isa = PBXGroup;
 			children = (
-				6D04A6D91E3F4C4800DD9F70 /* NabtoEdgeThermostat */,
-				6D04A6EE1E3F4C4800DD9F70 /* NabtoEdgeThermostatTests */,
+				6D04A6D91E3F4C4800DD9F70 /* NabtoEdgeVideo */,
+				6D04A6EE1E3F4C4800DD9F70 /* NabtoEdgeVideoTests */,
 				6D04A6D81E3F4C4800DD9F70 /* Products */,
 				6D04A6FA1E3F50F700DD9F70 /* Frameworks */,
 				AA0321A961738372158382D1 /* Pods */,
@@ -178,13 +182,13 @@
 		6D04A6D81E3F4C4800DD9F70 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6D04A6D71E3F4C4800DD9F70 /* Nabto Edge Thermostat.app */,
-				6D04A6EB1E3F4C4800DD9F70 /* NabtoEdgeThermostatTests.xctest */,
+				6D04A6D71E3F4C4800DD9F70 /* Nabto Edge Video.app */,
+				6D04A6EB1E3F4C4800DD9F70 /* NabtoEdgeVideoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6D04A6D91E3F4C4800DD9F70 /* NabtoEdgeThermostat */ = {
+		6D04A6D91E3F4C4800DD9F70 /* NabtoEdgeVideo */ = {
 			isa = PBXGroup;
 			children = (
 				4236EDA6299E6E430049A425 /* gst_ios_init.h */,
@@ -198,10 +202,10 @@
 				6D04A6DE1E3F4C4800DD9F70 /* Main.storyboard */,
 				6D04A7051E3F51EB00DD9F70 /* Supporting files */,
 			);
-			path = NabtoEdgeThermostat;
+			path = NabtoEdgeVideo;
 			sourceTree = "<group>";
 		};
-		6D04A6EE1E3F4C4800DD9F70 /* NabtoEdgeThermostatTests */ = {
+		6D04A6EE1E3F4C4800DD9F70 /* NabtoEdgeVideoTests */ = {
 			isa = PBXGroup;
 			children = (
 				6D95FF231E49F37E00FB070F /* FrameworkIntegrationTests.swift */,
@@ -210,7 +214,7 @@
 				6D04A6F11E3F4C4800DD9F70 /* Info.plist */,
 				E92ABEF8BBC6C0A9BC56081D /* EdgeManagerTests.swift */,
 			);
-			path = NabtoEdgeThermostatTests;
+			path = NabtoEdgeVideoTests;
 			sourceTree = "<group>";
 		};
 		6D04A6FA1E3F50F700DD9F70 /* Frameworks */ = {
@@ -231,8 +235,8 @@
 				6D04A7531E3F59BF00DD9F70 /* QuartzCore.framework */,
 				6D04A7541E3F59BF00DD9F70 /* UIKit.framework */,
 				6D04A7471E3F57E900DD9F70 /* Foundation.framework */,
-				8E6D6D3AD50316EEC98D7703 /* Pods_Nabto_Edge_Thermostat.framework */,
-				8CA16AADA6F490878CA2799D /* Pods_NabtoEdgeThermostatTests.framework */,
+				CC1E2B4C8FFDFF46300D1A67 /* Pods_Nabto_Edge_Video.framework */,
+				E035B3E47336C0732A412330 /* Pods_NabtoEdgeVideoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -242,7 +246,7 @@
 			children = (
 				6D04A6E11E3F4C4800DD9F70 /* Assets.xcassets */,
 				6D04A6E31E3F4C4800DD9F70 /* LaunchScreen.storyboard */,
-				6D04A70B1E3F53C900DD9F70 /* NabtoEdgeThermostat-Bridging-Header.h */,
+				6D04A70B1E3F53C900DD9F70 /* NabtoEdgeVideo-Bridging-Header.h */,
 				6D04A6E61E3F4C4800DD9F70 /* Info.plist */,
 			);
 			name = "Supporting files";
@@ -284,6 +288,10 @@
 				6D4A70B205DC38FCF310C42B /* Pods-Nabto Edge Thermostat.release.xcconfig */,
 				838A1E4147C7D2BE437766D2 /* Pods-NabtoEdgeThermostatTests.debug.xcconfig */,
 				D92CAACD2C0780E34FCC36E6 /* Pods-NabtoEdgeThermostatTests.release.xcconfig */,
+				233B5F640B59BD39EE484DE7 /* Pods-Nabto Edge Video.debug.xcconfig */,
+				8AC09F744A08DDB5C556243A /* Pods-Nabto Edge Video.release.xcconfig */,
+				F984A19CDE0E8A06E6CB5C91 /* Pods-NabtoEdgeVideoTests.debug.xcconfig */,
+				17C5B6A03D96C64591FABFF2 /* Pods-NabtoEdgeVideoTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -291,9 +299,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6D04A6D61E3F4C4800DD9F70 /* Nabto Edge Thermostat */ = {
+		6D04A6D61E3F4C4800DD9F70 /* Nabto Edge Video */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D04A6F41E3F4C4800DD9F70 /* Build configuration list for PBXNativeTarget "Nabto Edge Thermostat" */;
+			buildConfigurationList = 6D04A6F41E3F4C4800DD9F70 /* Build configuration list for PBXNativeTarget "Nabto Edge Video" */;
 			buildPhases = (
 				A24CBFF16965FAE1449823DC /* [CP] Check Pods Manifest.lock */,
 				6D04A6D31E3F4C4800DD9F70 /* Sources */,
@@ -305,14 +313,14 @@
 			);
 			dependencies = (
 			);
-			name = "Nabto Edge Thermostat";
+			name = "Nabto Edge Video";
 			productName = NabtoEdgeThermostat;
-			productReference = 6D04A6D71E3F4C4800DD9F70 /* Nabto Edge Thermostat.app */;
+			productReference = 6D04A6D71E3F4C4800DD9F70 /* Nabto Edge Video.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6D04A6EA1E3F4C4800DD9F70 /* NabtoEdgeThermostatTests */ = {
+		6D04A6EA1E3F4C4800DD9F70 /* NabtoEdgeVideoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D04A6F71E3F4C4800DD9F70 /* Build configuration list for PBXNativeTarget "NabtoEdgeThermostatTests" */;
+			buildConfigurationList = 6D04A6F71E3F4C4800DD9F70 /* Build configuration list for PBXNativeTarget "NabtoEdgeVideoTests" */;
 			buildPhases = (
 				F079587CC37B286788DF8046 /* [CP] Check Pods Manifest.lock */,
 				6D04A6E71E3F4C4800DD9F70 /* Sources */,
@@ -325,9 +333,9 @@
 			dependencies = (
 				6D04A6ED1E3F4C4800DD9F70 /* PBXTargetDependency */,
 			);
-			name = NabtoEdgeThermostatTests;
+			name = NabtoEdgeVideoTests;
 			productName = NabtoEdgeThermostatTests;
-			productReference = 6D04A6EB1E3F4C4800DD9F70 /* NabtoEdgeThermostatTests.xctest */;
+			productReference = 6D04A6EB1E3F4C4800DD9F70 /* NabtoEdgeVideoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -352,7 +360,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6D04A6D21E3F4C4800DD9F70 /* Build configuration list for PBXProject "NabtoEdgeThermostat" */;
+			buildConfigurationList = 6D04A6D21E3F4C4800DD9F70 /* Build configuration list for PBXProject "NabtoEdgeVideo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -366,8 +374,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6D04A6D61E3F4C4800DD9F70 /* Nabto Edge Thermostat */,
-				6D04A6EA1E3F4C4800DD9F70 /* NabtoEdgeThermostatTests */,
+				6D04A6D61E3F4C4800DD9F70 /* Nabto Edge Video */,
+				6D04A6EA1E3F4C4800DD9F70 /* NabtoEdgeVideoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -399,7 +407,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NabtoEdgeThermostatTests/Pods-NabtoEdgeThermostatTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-NabtoEdgeVideoTests/Pods-NabtoEdgeVideoTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CBORCoding/CBORCoding.framework",
 				"${BUILT_PRODUCTS_DIR}/Half/Half.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
@@ -422,7 +430,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NabtoEdgeThermostatTests/Pods-NabtoEdgeThermostatTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NabtoEdgeVideoTests/Pods-NabtoEdgeVideoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A24CBFF16965FAE1449823DC /* [CP] Check Pods Manifest.lock */ = {
@@ -440,7 +448,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Nabto Edge Thermostat-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Nabto Edge Video-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -462,7 +470,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-NabtoEdgeThermostatTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-NabtoEdgeVideoTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -475,7 +483,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Nabto Edge Thermostat/Pods-Nabto Edge Thermostat-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Nabto Edge Video/Pods-Nabto Edge Video-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CBORCoding/CBORCoding.framework",
 				"${BUILT_PRODUCTS_DIR}/Half/Half.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
@@ -498,7 +506,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Nabto Edge Thermostat/Pods-Nabto Edge Thermostat-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Nabto Edge Video/Pods-Nabto Edge Video-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -560,7 +568,7 @@
 /* Begin PBXTargetDependency section */
 		6D04A6ED1E3F4C4800DD9F70 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6D04A6D61E3F4C4800DD9F70 /* Nabto Edge Thermostat */;
+			target = 6D04A6D61E3F4C4800DD9F70 /* Nabto Edge Video */;
 			targetProxy = 6D04A6EC1E3F4C4800DD9F70 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -684,7 +692,7 @@
 		};
 		6D04A6F51E3F4C4800DD9F70 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED871FBED8ECCCC43207D0B6 /* Pods-Nabto Edge Thermostat.debug.xcconfig */;
+			baseConfigurationReference = 233B5F640B59BD39EE484DE7 /* Pods-Nabto Edge Video.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -708,7 +716,7 @@
 					"$(inherited)",
 					"$(HOME)/Library/Developer/GStreamer/iPhone.sdk/GStreamer.framework/Headers",
 				);
-				INFOPLIST_FILE = NabtoEdgeThermostat/Info.plist;
+				INFOPLIST_FILE = NabtoEdgeVideo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -722,7 +730,7 @@
 					"-lc++",
 					"-lresolv",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nabto.edge.thermostat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nabto.edge.video;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
@@ -733,7 +741,7 @@
 		};
 		6D04A6F61E3F4C4800DD9F70 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D4A70B205DC38FCF310C42B /* Pods-Nabto Edge Thermostat.release.xcconfig */;
+			baseConfigurationReference = 8AC09F744A08DDB5C556243A /* Pods-Nabto Edge Video.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -757,7 +765,7 @@
 					"$(inherited)",
 					"$(HOME)/Library/Developer/GStreamer/iPhone.sdk/GStreamer.framework/Headers",
 				);
-				INFOPLIST_FILE = NabtoEdgeThermostat/Info.plist;
+				INFOPLIST_FILE = NabtoEdgeVideo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -771,7 +779,7 @@
 					"-lc++",
 					"-lresolv",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nabto.edge.thermostat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nabto.edge.video;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
@@ -782,7 +790,7 @@
 		};
 		6D04A6F81E3F4C4800DD9F70 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 838A1E4147C7D2BE437766D2 /* Pods-NabtoEdgeThermostatTests.debug.xcconfig */;
+			baseConfigurationReference = F984A19CDE0E8A06E6CB5C91 /* Pods-NabtoEdgeVideoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -802,7 +810,7 @@
 		};
 		6D04A6F91E3F4C4800DD9F70 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D92CAACD2C0780E34FCC36E6 /* Pods-NabtoEdgeThermostatTests.release.xcconfig */;
+			baseConfigurationReference = 17C5B6A03D96C64591FABFF2 /* Pods-NabtoEdgeVideoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -823,7 +831,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6D04A6D21E3F4C4800DD9F70 /* Build configuration list for PBXProject "NabtoEdgeThermostat" */ = {
+		6D04A6D21E3F4C4800DD9F70 /* Build configuration list for PBXProject "NabtoEdgeVideo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D04A6F21E3F4C4800DD9F70 /* Debug */,
@@ -832,7 +840,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D04A6F41E3F4C4800DD9F70 /* Build configuration list for PBXNativeTarget "Nabto Edge Thermostat" */ = {
+		6D04A6F41E3F4C4800DD9F70 /* Build configuration list for PBXNativeTarget "Nabto Edge Video" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D04A6F51E3F4C4800DD9F70 /* Debug */,
@@ -841,7 +849,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D04A6F71E3F4C4800DD9F70 /* Build configuration list for PBXNativeTarget "NabtoEdgeThermostatTests" */ = {
+		6D04A6F71E3F4C4800DD9F70 /* Build configuration list for PBXNativeTarget "NabtoEdgeVideoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D04A6F81E3F4C4800DD9F70 /* Debug */,

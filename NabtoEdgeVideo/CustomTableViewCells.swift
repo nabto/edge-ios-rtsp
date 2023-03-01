@@ -1,6 +1,6 @@
 //
 //  CustomTableViewCells.swift
-//  ThermostatDemo
+//  Nabto Edge Video
 //
 //  Created by Nabto on 01/02/2022.
 //  Copyright © 2022 Nabto. All rights reserved.

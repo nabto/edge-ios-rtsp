@@ -1,6 +1,6 @@
 //
-//  EdgeThermostatViewController.swift
-//  ThermostatDemo
+//  EdgeDeviceViewController.swift
+//  Nabto Edge Video
 //
 //  Created by Nabto on 03/02/2022.
 //  Copyright © 2022 Nabto. All rights reserved.

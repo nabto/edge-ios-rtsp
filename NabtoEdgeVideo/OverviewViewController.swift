@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  ThermostatDemo
+//  Nabto Edge Video
 //
 //  Created by Nabto on 30/01/2022.
 //  Copyright © 2022 Nabto. All rights reserved.
@@ -198,7 +198,7 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
             device.isOnline = false
         } catch IamError.USER_DOES_NOT_EXIST {
             device.isPaired = false
-        } catch ThermostatError.DEVICE_IDENTITY_CHANGED {
+        } catch DeviceError.DEVICE_IDENTITY_CHANGED {
             device.isOnline = false
             device.error = "Device identity changed since pairing"
         } catch {

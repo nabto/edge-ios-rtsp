@@ -1,6 +1,6 @@
 //
 //  GStreamerBackendDelegate.h
-//  NabtoEdgeThermostat
+//  Nabto Edge Video
 //
 //  Created by Ahmad Saleh on 16/02/2023.
 //  Copyright © 2023 Nabto. All rights reserved.

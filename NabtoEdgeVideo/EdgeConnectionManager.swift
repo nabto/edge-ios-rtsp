@@ -1,13 +1,13 @@
 //
 //  EdgeManager.swift
-//  ThermostatDemo
+//  Nabto Edge Video
 //
 
 import UIKit
 import Network
 import NabtoEdgeClient
 
-public enum ThermostatError : Error {
+public enum DeviceError : Error {
     // fingerprint changed on device since pairing
     case DEVICE_IDENTITY_CHANGED
 }
@@ -157,7 +157,7 @@ class EdgeConnectionManager {
         try connection.connect()
         if let fp = target.deviceFingerprint {
             if (try connection.getDeviceFingerprintHex() != fp) {
-                throw ThermostatError.DEVICE_IDENTITY_CHANGED
+                throw DeviceError.DEVICE_IDENTITY_CHANGED
             }
         }
         return connection

@@ -1,6 +1,6 @@
 //
 //  DiscoverViewController.swift
-//  ThermostatDemo
+//  Nabto Edge Video
 //
 //  Created by Nabto on 31/01/2022.
 //  Copyright © 2022 Nabto. All rights reserved.
@@ -36,7 +36,7 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
         self.devices = []
         self.busy = true
         self.table.reloadData()
-        let scanner = EdgeConnectionManager.shared.client.createMdnsScanner(subType: "thermostat")
+        let scanner = EdgeConnectionManager.shared.client.createMdnsScanner(subType: "tcptunnel")
         scanner.addMdnsResultReceiver(self)
         do {
             try scanner.start()

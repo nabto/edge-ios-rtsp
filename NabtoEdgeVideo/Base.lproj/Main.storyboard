@@ -11,7 +11,7 @@
         <!--Overview-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="OverviewViewController" customModule="Nabto_Edge_Thermostat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="OverviewViewController" customModule="Nabto_Edge_Video" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -24,15 +24,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeviceCell" rowHeight="72" id="9Y7-sh-O29" customClass="DeviceCell" customModule="Nabto_Edge_Thermostat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeviceCell" rowHeight="72" id="9Y7-sh-O29" customClass="DeviceCell" customModule="Nabto_Edge_Video" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Y7-sh-O29" id="Aoq-SC-ZP9">
                                             <rect key="frame" x="0.0" y="0.0" width="348.5" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="thermometer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GIP-qm-u3P">
-                                                    <rect key="frame" x="16" y="10" width="51" height="51.5"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="video" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GIP-qm-u3P">
+                                                    <rect key="frame" x="16" y="12.5" width="51" height="47"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="hew-7V-45s"/>
@@ -89,7 +89,7 @@
                                             <outlet property="statusIcon" destination="Sln-SM-3C8" id="2eg-KY-fEE"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoDevicesCell" rowHeight="72" id="srd-Ev-xhc" customClass="NoDevicesCell" customModule="Nabto_Edge_Thermostat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoDevicesCell" rowHeight="72" id="srd-Ev-xhc" customClass="NoDevicesCell" customModule="Nabto_Edge_Video" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="122" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="srd-Ev-xhc" id="Wnl-d7-3dR">
@@ -140,7 +140,7 @@
                                             <outlet property="messageView" destination="MUe-YE-Gn8" id="UR2-ns-pO9"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OverviewButtonCell" rowHeight="110" id="h4b-gv-r7F" customClass="OverviewButtonCell" customModule="Nabto_Edge_Thermostat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OverviewButtonCell" rowHeight="110" id="h4b-gv-r7F" customClass="OverviewButtonCell" customModule="Nabto_Edge_Video" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="194" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h4b-gv-r7F" id="JAw-lM-dCq">
@@ -246,7 +246,7 @@
         <!--App settings-->
         <scene sceneID="JPM-xi-6e7">
             <objects>
-                <viewController id="Sgg-j7-M8A" customClass="SettingsViewController" customModule="Nabto_Edge_Thermostat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Sgg-j7-M8A" customClass="SettingsViewController" customModule="Nabto_Edge_Video" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GZ1-7I-Lra"/>
                         <viewControllerLayoutGuide type="bottom" id="EEL-gn-L3u"/>
@@ -340,7 +340,7 @@
         <!--Device Settings-->
         <scene sceneID="s8i-Nw-rEz">
             <objects>
-                <viewController storyboardIdentifier="DeviceSettingsViewController" title="Device Settings" id="3bu-dc-GHF" customClass="DeviceSettingsViewController" customModule="Nabto_Edge_Thermostat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeviceSettingsViewController" title="Device Settings" id="3bu-dc-GHF" customClass="DeviceSettingsViewController" customModule="Nabto_Edge_Video" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F9H-Ru-xCg"/>
                         <viewControllerLayoutGuide type="bottom" id="Ahy-NA-Ygu"/>
@@ -490,7 +490,7 @@
         <!--Discover-->
         <scene sceneID="hVs-th-4RT">
             <objects>
-                <viewController id="iQE-Ou-Jwx" customClass="DiscoverViewController" customModule="Nabto_Edge_Thermostat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iQE-Ou-Jwx" customClass="DiscoverViewController" customModule="Nabto_Edge_Video" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2wy-se-8MR"/>
                         <viewControllerLayoutGuide type="bottom" id="6nK-d5-SrT"/>
@@ -503,15 +503,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeviceCell" rowHeight="72" id="YXM-ig-I2l" customClass="DeviceCell" customModule="Nabto_Edge_Thermostat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeviceCell" rowHeight="72" id="YXM-ig-I2l" customClass="DeviceCell" customModule="Nabto_Edge_Video" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YXM-ig-I2l" id="d5K-2d-DLx">
                                             <rect key="frame" x="0.0" y="0.0" width="348.5" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="thermometer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3o2-Xq-0JF">
-                                                    <rect key="frame" x="16" y="11" width="50" height="50.5"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="video" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3o2-Xq-0JF">
+                                                    <rect key="frame" x="16" y="13" width="50" height="46"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="RVf-tO-fDO"/>
@@ -556,7 +556,7 @@
                                             <outlet property="nameLabel" destination="0RG-n7-UFH" id="4XD-1b-8au"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoDevicesCell" rowHeight="72" id="4TF-4h-AeV" customClass="NoDevicesCell" customModule="Nabto_Edge_Thermostat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoDevicesCell" rowHeight="72" id="4TF-4h-AeV" customClass="NoDevicesCell" customModule="Nabto_Edge_Video" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="122" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4TF-4h-AeV" id="LPo-xD-QoN">
@@ -566,8 +566,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFZ-79-RmP">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No thermostat devices found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nB5-5E-kQZ">
-                                                            <rect key="frame" x="16" y="3" width="221" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No devices found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nB5-5E-kQZ">
+                                                            <rect key="frame" x="16" y="3" width="133" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -607,7 +607,7 @@
                                             <outlet property="messageView" destination="RFZ-79-RmP" id="BIa-Du-1rt"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiscoverButtonCell" rowHeight="110" id="5dn-cv-9bi" customClass="DiscoverButtonCell" customModule="Nabto_Edge_Thermostat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiscoverButtonCell" rowHeight="110" id="5dn-cv-9bi" customClass="DiscoverButtonCell" customModule="Nabto_Edge_Video" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="194" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5dn-cv-9bi" id="EAt-Eg-zuX">
@@ -678,7 +678,7 @@
         <!--ACME Heater-->
         <scene sceneID="Xpn-Dh-Sju">
             <objects>
-                <viewController storyboardIdentifier="EdgeThermostatViewController" title="ACME Heater" id="XEm-96-IUG" customClass="EdgeDeviceViewController" customModule="Nabto_Edge_Thermostat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EdgeDeviceViewController" title="ACME Heater" id="XEm-96-IUG" customClass="EdgeDeviceViewController" customModule="Nabto_Edge_Video" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H8o-od-ao2"/>
                         <viewControllerLayoutGuide type="bottom" id="W6v-6E-quU"/>
@@ -750,7 +750,7 @@
                             <constraint firstItem="SEn-d0-Gzg" firstAttribute="centerY" secondItem="het-QO-7Lp" secondAttribute="centerY" id="zZu-fr-Xz7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="ACME Heater" id="smk-DZ-MF8">
+                    <navigationItem key="navigationItem" title="Video Device" id="smk-DZ-MF8">
                         <barButtonItem key="rightBarButtonItem" image="home" id="ppC-zE-0y4">
                             <connections>
                                 <action selector="goToHome:" destination="XEm-96-IUG" id="lal-hs-Doq"/>
@@ -791,7 +791,7 @@
         <!--Confirm Pairing-->
         <scene sceneID="tW8-cj-yoe">
             <objects>
-                <viewController title="Pair device" id="OZe-rU-UnQ" userLabel="Confirm Pairing" customClass="PairingViewController" customModule="Nabto_Edge_Thermostat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Pair device" id="OZe-rU-UnQ" userLabel="Confirm Pairing" customClass="PairingViewController" customModule="Nabto_Edge_Video" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T9A-lo-nmK"/>
                         <viewControllerLayoutGuide type="bottom" id="KDU-ru-eBE"/>
@@ -800,8 +800,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="thermometer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MfV-S9-5rQ">
-                                <rect key="frame" x="16" y="68" width="50" height="50.5"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="video" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MfV-S9-5rQ">
+                                <rect key="frame" x="16" y="70" width="50" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2Ik-FG-6ZQ"/>
                                     <constraint firstAttribute="width" constant="50" id="Uns-lH-UnV"/>
@@ -922,7 +922,7 @@
         <!--Pairing Confirmed-->
         <scene sceneID="vr4-NH-DZZ">
             <objects>
-                <viewController storyboardIdentifier="PairingConfirmedViewController" id="Ml6-fS-9zq" userLabel="Pairing Confirmed" customClass="PairingConfirmedViewController" customModule="Nabto_Edge_Thermostat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PairingConfirmedViewController" id="Ml6-fS-9zq" userLabel="Pairing Confirmed" customClass="PairingConfirmedViewController" customModule="Nabto_Edge_Video" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0ad-qZ-2Ay"/>
                         <viewControllerLayoutGuide type="bottom" id="b6b-41-WsC"/>
@@ -1000,7 +1000,7 @@
         <!--Add Device-->
         <scene sceneID="FAy-Vz-Rno">
             <objects>
-                <viewController id="5YR-MB-x8z" userLabel="Add Device" customClass="AddDeviceViewController" customModule="Nabto_Edge_Thermostat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5YR-MB-x8z" userLabel="Add Device" customClass="AddDeviceViewController" customModule="Nabto_Edge_Video" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YGP-cJ-2cp"/>
                         <viewControllerLayoutGuide type="bottom" id="njy-4f-22j"/>
@@ -1138,7 +1138,7 @@
         <!--Help-->
         <scene sceneID="dw7-5T-PJm">
             <objects>
-                <viewController title="Help" id="hSU-LS-9B3" customClass="HelpViewController" customModule="Nabto_Edge_Thermostat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Help" id="hSU-LS-9B3" customClass="HelpViewController" customModule="Nabto_Edge_Video" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="56Z-iv-1TY"/>
                         <viewControllerLayoutGuide type="bottom" id="aUc-Xh-LQn"/>
@@ -1151,8 +1151,8 @@
                                 <rect key="frame" x="0.0" y="-35" width="375" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CN9-EZ-Ui7">
-                                        <rect key="frame" x="16" y="70.5" width="343" height="67"/>
-                                        <string key="text">This app demonstrates the capabilities of the Nabto Edge  platform through a simple thermostat control example. In the following "target device" denotes this heating control.</string>
+                                        <rect key="frame" x="16" y="70.5" width="343" height="84"/>
+                                        <string key="text">This app demonstrates the capabilities of the Nabto Edge platform through a simple RTSP livestreaming scenario. In the following "target device" denotes the Edge-enabled device which exposes an RTSP livestream URL.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1164,7 +1164,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWF-BM-qgf">
-                                        <rect key="frame" x="16" y="200" width="343" height="217.5"/>
+                                        <rect key="frame" x="16" y="217" width="343" height="217.5"/>
                                         <string key="text">The overview page consists of a list of currently known target devices. A green icon indicates if it is online, a red icon and an error message if it is not available.
 
 New devices can be added from the overview page: To add a device, your client (this app) must be on the same local area network as the target device to enable discovery. Or you must enter a "pairing string" provided by the device owner to enable remote pairing. The pairing string contains info to locate the device and authenticate you towards the device.</string>
@@ -1173,20 +1173,20 @@ New devices can be added from the overview page: To add a device, your client (t
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview page" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXn-yc-mB1">
-                                        <rect key="frame" x="16" y="161.5" width="142.5" height="26.5"/>
+                                        <rect key="frame" x="16" y="178.5" width="142.5" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbX-nN-XxN">
-                                        <rect key="frame" x="16" y="480" width="343" height="84"/>
+                                        <rect key="frame" x="16" y="497" width="343" height="84"/>
                                         <string key="text">When a device is discovered, you are prompted to pair your client app with the device. If this is the first time somebody pairs a client with the device, you will become owner of the device. A device can only have one owner with the default implementation.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pairing devices" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5r-Uq-t2l">
-                                        <rect key="frame" x="16" y="441.5" width="143" height="26.5"/>
+                                        <rect key="frame" x="16" y="458.5" width="143" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1229,7 +1229,7 @@ New devices can be added from the overview page: To add a device, your client (t
         <!--Edit user-->
         <scene sceneID="S92-4U-Vf0">
             <objects>
-                <viewController title="Edit user" id="dfX-gc-DOG" customClass="EditUserViewController" customModule="Nabto_Edge_Thermostat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Edit user" id="dfX-gc-DOG" customClass="EditUserViewController" customModule="Nabto_Edge_Video" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZzR-sO-9Ed"/>
                         <viewControllerLayoutGuide type="bottom" id="aMw-Vf-2lQ"/>
@@ -1460,7 +1460,7 @@ New devices can be added from the overview page: To add a device, your client (t
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5RW-eh-vA1"/>
+        <segue reference="Pzf-OU-J9K"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
@@ -1469,7 +1469,7 @@ New devices can be added from the overview page: To add a device, your client (t
         <image name="home" width="36" height="36"/>
         <image name="refresh" width="20" height="20"/>
         <image name="settings" width="36" height="36"/>
-        <image name="thermometer" catalog="system" width="80" height="128"/>
+        <image name="video" catalog="system" width="128" height="82"/>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

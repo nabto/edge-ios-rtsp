@@ -1,6 +1,6 @@
 //
 //  PairingConfirmedViewController.swift
-//  Nabto Edge Thermostat
+//  Nabto Edge Video
 //
 //  Created by Ulrik Gammelby on 11/08/2022.
 //  Copyright © 2022 Nabto. All rights reserved.
@@ -21,7 +21,7 @@ class PairingConfirmedViewController: ViewControllerWithDevice, UITextFieldDeleg
     @IBOutlet weak var nameField: UITextField!
     var pairingConfirmedDelegate: PairingConfirmedListener?
 
-    var appName: String = "My Thermostat"
+    var appName: String = "My Device"
     let text = "Congratulations! You are successfully paired with device '%@.%@' in role '%@'."
 
     override func viewDidLoad() {

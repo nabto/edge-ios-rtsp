@@ -1,6 +1,6 @@
 //
 //  VideoViewController.swift
-//  NabtoEdgeThermostat
+//  NabtoEdgeVideo
 //
 //  Created by Ahmad Saleh on 22/02/2023.
 //  Copyright © 2023 Nabto. All rights reserved.

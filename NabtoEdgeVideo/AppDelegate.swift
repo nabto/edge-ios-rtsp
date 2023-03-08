@@ -16,10 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var starting = true
+    private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "NabtoAppDelegate")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let logger = Logger()
-        
         gst_ios_init()
         IQKeyboardManager.shared.enable = true
         logger.info("GStreamer initialized with version \(GStreamerBackend().getGStreamerVersion())")

@@ -148,6 +148,7 @@ class EdgeDeviceViewController: DeviceDetailsViewController {
             }
         } else {
             showDeviceErrorMsg("TcpTunnel is not open, failed to start video stream!")
+            startTunnelOnMainThread(userPath: userPath)
         }
         self.busy = false
     }
@@ -162,22 +163,22 @@ class EdgeDeviceViewController: DeviceDetailsViewController {
         }
     }
     
-    private func startTunnel() {
+    private func startTunnel(userPath: String? = nil) {
         do {
             let conn = try EdgeConnectionManager.shared.getConnection(self.device)
             serviceInfo = try getServiceInfo(connection: conn)
             
             tunnel = try conn.createTcpTunnel()
             tunnel?.openAsync(service: "rtsp", localPort: 0, closure: { _ in
-                self.startVideo()
+                self.startVideo(userPath: userPath)
             })
         } catch {
             handleDeviceError(error)
         }
     }
     
-    private func startTunnelOnMainThread() {
-        DispatchQueue.main.async { self.startTunnel() }
+    private func startTunnelOnMainThread(userPath: String? = nil) {
+        DispatchQueue.main.async { self.startTunnel(userPath: userPath) }
     }
 
     override func viewDidLoad() {
@@ -234,8 +235,8 @@ class EdgeDeviceViewController: DeviceDetailsViewController {
     }
 
     // MARK: - Reachability callbacks
-    
     @objc func appMovedToBackground() {
+        videoViewController.pause()
     }
     
     @objc func appWillMoveToForeground() {
@@ -255,6 +256,11 @@ class EdgeDeviceViewController: DeviceDetailsViewController {
         DispatchQueue.main.async {
             let banner = GrowingNotificationBanner(title: "Network connection lost", subtitle: "Please try again later", style: .warning)
             banner.show()
+            do {
+                try self.tunnel?.close()
+            } catch {
+                NSLog("Could not close tunnel in networkLost")
+            }
         }
     }
 
@@ -263,6 +269,7 @@ class EdgeDeviceViewController: DeviceDetailsViewController {
             let banner = GrowingNotificationBanner(title: "Network up again!", style: .success)
             banner.show()
         }
+        //startTunnelOnMainThread()
     }
 }
 

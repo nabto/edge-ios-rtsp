@@ -14,6 +14,7 @@ class VideoViewController: UIViewController, GStreamerBackendDelegate
     private var videoView = UIView()
     private var gst: GStreamerBackend?
     private var uri: String?
+    private var isPlayingDesired = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,18 @@ class VideoViewController: UIViewController, GStreamerBackendDelegate
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
+        nc.addObserver(
+            self,
+            selector: #selector(appWillResignActive),
+            name: UIApplication.willResignActiveNotification,
+            object: nil
+        )
+        nc.addObserver(
+            self,
+            selector: #selector(appDidBecomeActive),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -38,12 +51,22 @@ class VideoViewController: UIViewController, GStreamerBackendDelegate
         gst?.destroy()
     }
     
+    @objc func appWillResignActive() {
+        gst?.pause()
+    }
+    
+    @objc func appDidBecomeActive() {
+        if isPlayingDesired {
+            gst?.play()
+        }
+    }
+    
     @objc func appMovedToBackground() {
         gst?.pause()
     }
     
     @objc func appWillMoveToForeground() {
-        if let uri = uri {
+        if isPlayingDesired, let uri = uri {
             setUri(uri)
         }
     }
@@ -56,14 +79,17 @@ class VideoViewController: UIViewController, GStreamerBackendDelegate
     }
     
     func pause() {
+        isPlayingDesired = false
         gst?.pause()
     }
     
     func play() {
+        isPlayingDesired = true
         gst?.play()
     }
     
     func setUri(_ newUri: String) {
+        isPlayingDesired = true
         uri = newUri
         
         videoView.removeFromSuperview()

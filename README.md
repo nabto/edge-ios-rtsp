@@ -16,6 +16,10 @@ The app installs dependencies through Cocoapod, so to build and run, perform the
 
 2. Open the generated workspace in XCode and work from there: `open NabtoEdgeVideo.xcworkspace`
 
+## Simulator issues
+
+The GStreamer package does as of writing not support M1 simulator builds. So either run on a physical iOS device. Or start XCode through Rosetta, this will build for and launch an x86_64 simulator instead of an arm64 based one.
+
 ## Questions?
 
 In case of questions or problems, please write to support@nabto.com or contact us through the live chat on [www.nabto.com](https://www.nabto.com).

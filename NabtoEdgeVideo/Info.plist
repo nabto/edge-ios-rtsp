@@ -51,5 +51,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>The app uses a 3rd party library for showing the video stream. This 3rd party library includes code for accessing the iOS device&apos;s camera. The camera features are not used in the app, but this notice is necessary due to the inclusion of the library.</string>
 </dict>
 </plist>

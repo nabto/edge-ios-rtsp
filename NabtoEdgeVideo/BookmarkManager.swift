@@ -17,6 +17,7 @@ class Bookmark : Equatable, Hashable, CustomStringConvertible, Codable {
     var modelName: String?
     var role: String?
     var deviceFingerprint: String?
+    var rtspPath: String?
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(deviceId)
@@ -37,7 +38,7 @@ class Bookmark : Equatable, Hashable, CustomStringConvertible, Codable {
         "Bookmark(deviceId: \(deviceId), productId: \(productId), timeAdded: \(timeAdded), sct: \(sct), name: \(name), modelName: \(modelName), role: \(role))"
     }
 
-    init(deviceId: String, productId: String, creationTime: Date?=nil, sct: String?=nil, name: String?=nil, modelName: String?=nil, role: String?=nil) {
+    init(deviceId: String, productId: String, creationTime: Date?=nil, sct: String?=nil, name: String?=nil, modelName: String?=nil, role: String?=nil, rtspPath: String?=nil) {
         self.deviceId = deviceId
         self.productId = productId
         self.timeAdded = creationTime
@@ -47,6 +48,7 @@ class Bookmark : Equatable, Hashable, CustomStringConvertible, Codable {
         }
         self.modelName = modelName
         self.role = role
+        self.rtspPath = rtspPath
     }
 }
 

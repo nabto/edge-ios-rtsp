@@ -18,9 +18,11 @@ class ViewControllerWithDevice: UIViewController {
 class DeviceDetailsViewController: ViewControllerWithDevice {
 
     @IBOutlet weak var deviceIDLabel    : UILabel!
-    @IBOutlet weak var nameTextField    : UITextField!
-    @IBOutlet weak var guestLabel       : UILabel!
-
+    @IBOutlet weak var productIDLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var pathField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -28,6 +30,8 @@ class DeviceDetailsViewController: ViewControllerWithDevice {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = device?.name ?? ""
+        nameField.text = device?.name ?? ""
+        pathField.text = device?.
     }
 
     override func didReceiveMemoryWarning() {

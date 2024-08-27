@@ -17,13 +17,17 @@ class ViewControllerWithDevice: UIViewController {
 
 class DeviceDetailsViewController: ViewControllerWithDevice {
 
+    @IBOutlet weak var deviceIDLabel    : UILabel!
+    @IBOutlet weak var nameTextField    : UITextField!
+    @IBOutlet weak var guestLabel       : UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = device.name
+        navigationItem.title = device?.name ?? ""
     }
 
     override func didReceiveMemoryWarning() {

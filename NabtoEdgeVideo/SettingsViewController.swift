@@ -35,6 +35,7 @@ class SettingsViewController: UIViewController {
     
     func resetKeypair() {
         ProfileTools.clearProfile() //remove from saved data
+        EdgeConnectionManager.shared.reset() // close any cached connections using this private key
     }
 
     //MARK: - IBActions

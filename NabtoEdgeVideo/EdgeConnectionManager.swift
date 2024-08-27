@@ -59,6 +59,7 @@ class EdgeConnectionManager {
             self?.handleNetworkPathUpdated(path)
         }
         self.monitor.start(queue: self.monitorQueue)
+        print(self.client.debugDescription + " initialized")
     }
 
     internal var client: NabtoEdgeClient.Client {

@@ -78,9 +78,11 @@ class PairingViewController: UIViewController, PairingConfirmedListener, UITextF
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let device = sender as? Bookmark else { return }
-        if let destination = segue.destination as? DeviceDetailsViewController {
-            destination.device = device
+        if segue.identifier == "toPairingConfirmed" {
+            if let viewController = segue.destination as? PairingConfirmedViewController {
+                viewController.pairingConfirmedDelegate = self
+                viewController.device = self.device
+            }
         }
     }
 
@@ -126,10 +128,7 @@ class PairingViewController: UIViewController, PairingConfirmedListener, UITextF
 
     private func showConfirmation() {
         DispatchQueue.main.sync {
-            let controller = StoryboardHelper.getViewController(id: "PairingConfirmedViewController") as! PairingConfirmedViewController
-            controller.device = self.device
-            controller.pairingConfirmedDelegate = self
-            navigationController?.pushViewController(controller, animated: true)
+            performSegue(withIdentifier: "toPairingConfirmed", sender: device)
         }
     }
 

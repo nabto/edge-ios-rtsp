@@ -16,12 +16,12 @@ class ViewControllerWithDevice: UIViewController {
 }
 
 class DeviceDetailsViewController: ViewControllerWithDevice {
-
-    @IBOutlet weak var deviceIDLabel    : UILabel!
-    @IBOutlet weak var productIDLabel: UILabel!
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var pathTextField: UITextField!
+    @IBOutlet weak var deviceIdLabel: UILabel!
+    @IBOutlet weak var productIdLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var pathField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +29,16 @@ class DeviceDetailsViewController: ViewControllerWithDevice {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         navigationItem.title = device?.name ?? ""
-        nameField.text = device?.name ?? ""
-        pathField.text = device?.
+        nameTextField.text = device?.name ?? ""
+        pathTextField.text = "/\(device?.name ?? "(no name)")"
+        deviceIdLabel.text = device?.deviceId ?? ""
+        productIdLabel.text = device?.productId ?? ""
+        nameLabel.text = device?.name ?? ""
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,3 +49,4 @@ class DeviceDetailsViewController: ViewControllerWithDevice {
         _ = navigationController?.popToRootViewController(animated: true)
     }
 }
+// mPe-hl-Hx2

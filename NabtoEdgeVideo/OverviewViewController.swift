@@ -267,9 +267,7 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func handlePaired(device: Bookmark) {
-        if let controller = StoryboardHelper.viewControllerFor(device: device) {
-                self.navigationController?.pushViewController(controller, animated: true)
-        }
+        performSegue(withIdentifier: "toDeviceFromOverview", sender: device)
     }
     
     func handleUnpaired(device: Bookmark) {
@@ -346,7 +344,7 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         guard let device = sender as? Bookmark else { return }
         if let destination = segue.destination as? PairingViewController {
             destination.device = device
-        } else if let destination = segue.destination as? DeviceDetailsViewController {
+        } else if let destination = segue.destination as? EdgeDeviceViewController {
             destination.device = device
         }
     }

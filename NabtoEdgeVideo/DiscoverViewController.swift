@@ -99,8 +99,6 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
         
         if let destination = segue.destination as? PairingViewController {
             destination.device = device
-        } else if let destination = segue.destination as? DeviceDetailsViewController {
-            destination.device = device
         }
     }
     

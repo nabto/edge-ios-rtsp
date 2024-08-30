@@ -1,11 +1,3 @@
-//
-//  EdgeDeviceViewController.swift
-//  Nabto Edge Video
-//
-//  Created by Nabto on 03/02/2022.
-//  Copyright © 2022 Nabto. All rights reserved.
-//
-
 import UIKit
 import NotificationBannerSwift
 import CBORCoding
@@ -13,33 +5,32 @@ import NabtoEdgeClient
 import NabtoEdgeIamUtil
 import OSLog
 
-class EdgeDeviceViewController: DeviceDetailsViewController {
+class EdgeDeviceViewController: ViewControllerWithDevice {
     private let defaultVideoPath = "/video"
-    
-    private let cborEncoder: CBOREncoder = CBOREncoder()
-    private var tunnel: TcpTunnel? = nil
+    private let cborEncoder = CBOREncoder()
+    private var tunnel: TcpTunnel?
     private let videoViewController = VideoViewController()
-    private var serviceInfo: ServiceInfo? = nil
+    private var serviceInfo: ServiceInfo?
 
-    @IBOutlet weak var settingsButton       : UIButton!
-    @IBOutlet weak var connectingView       : UIView!
-    @IBOutlet weak var spinner              : UIActivityIndicatorView!
-    @IBOutlet weak var videoView            : UIView!
-    @IBOutlet weak var refreshVideoButton   : UIButton!
-    @IBOutlet weak var videoPathTextField   : UITextField!
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var connectingView: UIView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var videoView: UIView!
+    @IBOutlet weak var refreshVideoButton: UIButton!
+    @IBOutlet weak var videoPathTextField: UITextField!
     
-    @IBOutlet weak var deviceIdLabel         : UILabel!
+    @IBOutlet weak var deviceIdLabel: UILabel!
     @IBOutlet weak var appNameAndVersionLabel: UILabel!
-    @IBOutlet weak var usernameLabel         : UILabel!
-    @IBOutlet weak var displayNameLabel      : UILabel!
-    @IBOutlet weak var roleLabel             : UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var displayNameLabel: UILabel!
+    @IBOutlet weak var roleLabel: UILabel!
 
-    var offline         = false
-    var showReconnectedMessage: Bool = false
+    var offline = false
+    var showReconnectedMessage = false
     var refreshTimer: Timer?
     var busyTimer: Timer?
-    var banner: GrowingNotificationBanner? = nil
-    
+    var banner: GrowingNotificationBanner?
+
     var busy = false {
         didSet {
             self.busyTimer?.invalidate()
@@ -52,15 +43,22 @@ class EdgeDeviceViewController: DeviceDetailsViewController {
             }
         }
     }
+    
+    @IBAction func detailsTapped(_ sender: Any) {
+        performSegue(withIdentifier: "toDeviceDetails", sender: self)
+    }
+    
+    @IBAction func goToHome(_ sender: Any) {
+        _ = navigationController?.popToRootViewController(animated: true)
+    }
 
     private func showConnectSuccessIfNecessary() {
-        if (self.showReconnectedMessage) {
-            DispatchQueue.main.async {
-                self.banner?.dismiss()
-                self.banner = GrowingNotificationBanner(title: "Connected", subtitle: "Connection re-established!", style: .success)
-                self.banner!.show()
-                self.showReconnectedMessage = false
-            }
+        guard self.showReconnectedMessage else { return }
+        DispatchQueue.main.async {
+            self.banner?.dismiss()
+            self.banner = GrowingNotificationBanner(title: "Connected", subtitle: "Connection re-established!", style: .success)
+            self.banner?.show()
+            self.showReconnectedMessage = false
         }
     }
 
@@ -68,44 +66,40 @@ class EdgeDeviceViewController: DeviceDetailsViewController {
         EdgeConnectionManager.shared.removeConnection(self.device)
         if let error = error as? NabtoEdgeClientError {
             handleApiError(error: error)
-        } else if let error = error as? IamError {
-            if case .API_ERROR(let cause) = error {
-                handleApiError(error: cause)
-            } else {
-                NSLog("Pairing error, really? \(error)")
-            }
+        } else if let error = error as? IamError, case .API_ERROR(let cause) = error {
+            handleApiError(error: cause)
         } else {
-            self.showDeviceErrorMsg("\(error)")
+            NSLog("Pairing error: \(error)")
+            showDeviceErrorMsg("\(error)")
         }
     }
 
     private func handleApiError(error: NabtoEdgeClientError) {
+        let message: String
         switch error {
         case .NO_CHANNELS:
-            self.showDeviceErrorMsg("Device offline - please make sure you and the target device both have a working network connection")
-            break
+            message = "Device offline - please make sure you and the target device both have a working network connection"
         case .TIMEOUT:
-            self.showDeviceErrorMsg("The operation timed out - was the connection lost?")
-            break
+            message = "The operation timed out - was the connection lost?"
         case .STOPPED:
-            // ignore - connection/client will be restarted at next connect attempt
-            break
+            return // ignore - connection/client will be restarted at next connect attempt
         default:
-            self.showDeviceErrorMsg("An error occurred: \(error)")
+            message = "An error occurred: \(error)"
         }
+        showDeviceErrorMsg(message)
     }
 
     func showDeviceErrorMsg(_ msg: String) {
         DispatchQueue.main.async {
             self.banner?.dismiss()
             self.banner = GrowingNotificationBanner(title: "Communication Error", subtitle: msg, style: .danger)
-            self.banner!.show()
+            self.banner?.show()
         }
     }
 
     @objc func showSpinner() {
         DispatchQueue.main.async {
-            if (self.busy) {
+            if self.busy {
                 self.connectingView.isHidden = false
                 self.spinner.startAnimating()
             }
@@ -120,127 +114,144 @@ class EdgeDeviceViewController: DeviceDetailsViewController {
     }
     
     @IBAction func refreshVideoTap(_ sender: Any) {
-        if (videoPathTextField.text != nil && !videoPathTextField.text!.isEmpty) {
-            startVideo(userPath: videoPathTextField.text!)
+        let userPath = videoPathTextField.text ?? ""
+        let path: String
+        if userPath.isEmpty {
+            path = serviceInfo?.metadata["rtsp-path"] ?? defaultVideoPath
+        } else {
+            path = userPath
         }
+        startTunnelAndVideo(userPath: path)
+
     }
     
     private func constructRtspUri(auth: String, port: UInt16, path: String) -> String {
         var cleanedPath = path.trimmingCharacters(in: .whitespacesAndNewlines)
-        if (!cleanedPath.hasPrefix("/")) {
+        if !cleanedPath.hasPrefix("/") {
             cleanedPath.insert("/", at: cleanedPath.startIndex)
         }
         return "rtsp://\(auth)127.0.0.1:\(port)\(cleanedPath)"
     }
     
     private func startVideo(userPath: String? = nil) {
-        if let tunnel = self.tunnel, let serviceInfo = self.serviceInfo, let port = try? tunnel.getLocalPort() {
-            let path = userPath ?? serviceInfo.metadata["rtsp-path"] ?? defaultVideoPath
-            
-            let username = serviceInfo.metadata["rtsp-username"] ?? ""
-            let password = serviceInfo.metadata["rtsp-password"] ?? ""
-            let auth = username.isEmpty ? "" : "\(username):\(password)@"
-            
-            let uri = constructRtspUri(auth: auth, port: port, path: path)
-            DispatchQueue.main.async {
-                self.videoPathTextField.text = path
-                self.videoViewController.setUri(uri)
-            }
-        } else {
+        guard let tunnel = self.tunnel, let serviceInfo = self.serviceInfo, let port = try? tunnel.getLocalPort() else {
             showDeviceErrorMsg("TcpTunnel is not open, failed to start video stream!")
-            startTunnelOnMainThread(userPath: userPath)
+            DispatchQueue.main.async {
+                self.busy = false
+            }
+            return
         }
-        self.busy = false
+        
+        let path = userPath ?? serviceInfo.metadata["rtsp-path"] ?? defaultVideoPath
+        let username = serviceInfo.metadata["rtsp-username"] ?? ""
+        let password = serviceInfo.metadata["rtsp-password"] ?? ""
+        let auth = username.isEmpty ? "" : "\(username):\(password)@"
+        
+        let uri = constructRtspUri(auth: auth, port: port, path: path)
+        DispatchQueue.main.async {
+            self.busy = false
+            self.videoPathTextField.text = path
+            self.videoViewController.setUri(uri)
+            self.videoViewController.play()
+        }
     }
     
     private func getServiceInfo(connection: Connection) throws -> ServiceInfo {
         let request = try connection.createCoapRequest(method: "GET", path: "/tcp-tunnels/services/rtsp")
         let response = try request.execute()
-        if (response.status == 205) {
-            return try ServiceInfo.decode(cbor: response.payload)
-        } else {
+        guard response.status == 205 else {
             throw NabtoEdgeClientError.FAILED_WITH_DETAIL(detail: "Could not get device service info, got status \(response.status)")
         }
+        return try ServiceInfo.decode(cbor: response.payload)
     }
     
-    private func startTunnel(userPath: String? = nil) {
-        do {
-            let conn = try EdgeConnectionManager.shared.getConnection(self.device)
-            serviceInfo = try getServiceInfo(connection: conn)
-            
-            tunnel = try conn.createTcpTunnel()
-            tunnel?.openAsync(service: "rtsp", localPort: 0, closure: { _ in
+    private func startTunnelAndVideo(userPath: String? = nil) {
+        DispatchQueue.global(qos: .background).async {
+            do {
+                self.busy = true
+                let conn = try EdgeConnectionManager.shared.getConnection(self.device)
+                self.serviceInfo = try self.getServiceInfo(connection: conn)
+                if (self.tunnel != nil) {
+                    try self.tunnel?.close()
+                }
+                // open a fresh tunnel - gstreamer behaves oddly with severe artifacts the first 0.5-5 seconds if re-using exact RTSP URL ¯\_(ツ)_/¯
+                self.tunnel = try conn.createTcpTunnel()
+                try self.tunnel?.open(service: "rtsp", localPort: 0)
                 self.startVideo(userPath: userPath)
-            })
-        } catch {
-            handleDeviceError(error)
+            } catch {
+                self.handleDeviceError(error)
+            }
         }
-    }
-    
-    private func startTunnelOnMainThread(userPath: String? = nil) {
-        DispatchQueue.main.async { self.startTunnel(userPath: userPath) }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.busy = true
-        self.videoView.addSubview(videoViewController.view)
-        videoViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        videoViewController.view.topAnchor.constraint(equalTo: self.videoView.topAnchor, constant: 0).isActive = true
-        videoViewController.view.bottomAnchor.constraint(equalTo: self.videoView.bottomAnchor, constant: 0).isActive = true
-        videoViewController.view.leftAnchor.constraint(equalTo: self.videoView.leftAnchor, constant: 0).isActive = true
-        videoViewController.view.rightAnchor.constraint(equalTo: self.videoView.rightAnchor, constant: 0).isActive = true
-        
+        setupVideoView()
         videoPathTextField.autocorrectionType = .no
-        startTunnelOnMainThread()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        startTunnelAndVideo()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default
-                .removeObserver(self, name: NSNotification.Name(EdgeConnectionManager.eventNameConnectionClosed), object: nil)
-        NotificationCenter.default
-                .removeObserver(self, name: NSNotification.Name(EdgeConnectionManager.eventNameNoNetwork), object: nil)
-        NotificationCenter.default
-                .removeObserver(self, name: NSNotification.Name(EdgeConnectionManager.eventNameNetworkAvailable), object: nil)
+        videoViewController.pause()
+
+        // XXX gstreamer crashes if closing tunnel, wtf? reproducible also if triggered by button press instead of life cycle function
+//        try? self.tunnel?.close()
+//        self.tunnel = nil
+//        self.tunnel?.closeAsync(closure: { ec in
+//            if (ec != NabtoEdgeClientError.OK) {
+//                NSLog("Could not close tunnel: \(ec)");
+//            }
+//            self.tunnel = nil
+//        })
+        removeObservers()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        addObservers()
+    }
+
+    // MARK: - Helper Functions
+
+    private func setupVideoView() {
+        videoView.addSubview(videoViewController.view)
+        videoViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            videoViewController.view.topAnchor.constraint(equalTo: videoView.topAnchor),
+            videoViewController.view.bottomAnchor.constraint(equalTo: videoView.bottomAnchor),
+            videoViewController.view.leftAnchor.constraint(equalTo: videoView.leftAnchor),
+            videoViewController.view.rightAnchor.constraint(equalTo: videoView.rightAnchor)
+        ])
+    }
+
+    private func addObservers() {
         let nc = NotificationCenter.default
-        nc.addObserver(self,
-                       selector: #selector(connectionClosed),
-                       name: NSNotification.Name (EdgeConnectionManager.eventNameConnectionClosed),
-                       object: nil)
-        nc.addObserver(self,
-                       selector: #selector(networkLost),
-                       name: NSNotification.Name (EdgeConnectionManager.eventNameNoNetwork),
-                       object: nil)
-        nc.addObserver(self,
-                       selector: #selector(networkAvailable),
-                       name: NSNotification.Name (EdgeConnectionManager.eventNameNetworkAvailable),
-                       object: nil)
-        nc.addObserver(self,
-                       selector: #selector(appMovedToBackground),
-                       name: UIApplication.willResignActiveNotification,
-                       object: nil)
-        nc.addObserver(self,
-                       selector: #selector(appWillMoveToForeground),
-                       name: UIApplication.willEnterForegroundNotification,
-                       object: nil)
+        nc.addObserver(self, selector: #selector(connectionClosed), name: NSNotification.Name(EdgeConnectionManager.eventNameConnectionClosed), object: nil)
+        nc.addObserver(self, selector: #selector(networkLost), name: NSNotification.Name(EdgeConnectionManager.eventNameNoNetwork), object: nil)
+        nc.addObserver(self, selector: #selector(networkAvailable), name: NSNotification.Name(EdgeConnectionManager.eventNameNetworkAvailable), object: nil)
+        nc.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        nc.addObserver(self, selector: #selector(appWillMoveToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+
+    private func removeObservers() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(EdgeConnectionManager.eventNameConnectionClosed), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(EdgeConnectionManager.eventNameNoNetwork), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(EdgeConnectionManager.eventNameNetworkAvailable), object: nil)
     }
 
     // MARK: - Reachability callbacks
+
     @objc func appMovedToBackground() {
         videoViewController.pause()
     }
     
     @objc func appWillMoveToForeground() {
-        startTunnelOnMainThread()
+        startTunnelAndVideo()
     }
 
     @objc func connectionClosed(_ notification: Notification) {
@@ -254,8 +265,7 @@ class EdgeDeviceViewController: DeviceDetailsViewController {
 
     @objc func networkLost(_ notification: Notification) {
         DispatchQueue.main.async {
-            let banner = GrowingNotificationBanner(title: "Network connection lost", subtitle: "Please try again later", style: .warning)
-            banner.show()
+            self.showDeviceErrorMsg("Network connection lost - Please try again later")
             do {
                 try self.tunnel?.close()
             } catch {
@@ -266,10 +276,8 @@ class EdgeDeviceViewController: DeviceDetailsViewController {
 
     @objc func networkAvailable(_ notification: Notification) {
         DispatchQueue.main.async {
-            let banner = GrowingNotificationBanner(title: "Network up again!", style: .success)
-            banner.show()
+            GrowingNotificationBanner(title: "Network up again!", style: .success).show()
         }
-        //startTunnelOnMainThread()
     }
 }
 

@@ -83,6 +83,10 @@ class VideoViewController: UIViewController, GStreamerBackendDelegate
         gst?.pause()
     }
     
+    func stop() {
+        gst?.destroy()
+    }
+    
     func play() {
         isPlayingDesired = true
         gst?.play()

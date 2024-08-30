@@ -48,8 +48,14 @@ GST_DEBUG_CATEGORY(debug_category);
     return self;
 }
 
+-(void)deinit
+{
+    [self->video_view.subviews.firstObject removeFromSuperview];
+}
+
 -(void)destroy
 {
+    gst_bin_remove(GST_BIN(pipeline), video_sink);
     if (main_loop)
     {
         g_main_loop_quit(main_loop);

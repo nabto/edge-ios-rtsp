@@ -230,6 +230,7 @@ class EdgeDeviceViewController: ViewControllerWithDevice {
             videoViewController.view.leftAnchor.constraint(equalTo: videoView.leftAnchor),
             videoViewController.view.rightAnchor.constraint(equalTo: videoView.rightAnchor)
         ])
+        videoViewController.didMove(toParent: self)
     }
 
     private func addObservers() {

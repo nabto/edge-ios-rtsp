@@ -198,16 +198,18 @@ class EdgeDeviceViewController: ViewControllerWithDevice {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         videoViewController.pause()
+        
+        // XXX if not stopping, gstreamer crashes when closing tunnel
+        videoViewController.stop()
 
-        // XXX gstreamer crashes if closing tunnel, wtf? reproducible also if triggered by button press instead of life cycle function
-//        try? self.tunnel?.close()
-//        self.tunnel = nil
-//        self.tunnel?.closeAsync(closure: { ec in
-//            if (ec != NabtoEdgeClientError.OK) {
-//                NSLog("Could not close tunnel: \(ec)");
-//            }
-//            self.tunnel = nil
-//        })
+        try? self.tunnel?.close()
+        self.tunnel = nil
+        self.tunnel?.closeAsync(closure: { ec in
+            if (ec != NabtoEdgeClientError.OK) {
+                NSLog("Could not close tunnel: \(ec)");
+            }
+            self.tunnel = nil
+        })
         removeObservers()
     }
 
@@ -219,6 +221,7 @@ class EdgeDeviceViewController: ViewControllerWithDevice {
     // MARK: - Helper Functions
 
     private func setupVideoView() {
+        addChild(videoViewController)
         videoView.addSubview(videoViewController.view)
         videoViewController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

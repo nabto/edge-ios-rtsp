@@ -133,6 +133,64 @@ class EdgeDeviceViewController: ViewControllerWithDevice {
         return "rtsp://\(auth)127.0.0.1:\(port)\(cleanedPath)"
     }
     
+    private func getServiceInfo(connection: Connection) throws -> ServiceInfo {
+        let request = try connection.createCoapRequest(method: "GET", path: "/tcp-tunnels/services/rtsp")
+        let response = try request.execute()
+        guard response.status == 205 else {
+            throw NabtoEdgeClientError.FAILED_WITH_DETAIL(detail: "Could not get device service info, got status \(response.status)")
+        }
+        return try ServiceInfo.decode(cbor: response.payload)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupVideoView()
+        videoPathTextField.autocorrectionType = .no
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        startTunnelAndVideo()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if (self.isMovingFromParent) {
+            // moving back to overview - stop tunnel and player
+            stopTunnelAndVideo()
+        } else {
+            pauseVideo()
+        }
+
+        removeObservers()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addObservers()
+    }
+
+    // MARK: - Helper Functions
+    
+    private func startTunnelAndVideo(userPath: String? = nil) {
+        DispatchQueue.global(qos: .background).async {
+            do {
+                self.busy = true
+                let conn = try EdgeConnectionManager.shared.getConnection(self.device)
+                self.serviceInfo = try self.getServiceInfo(connection: conn)
+                if (self.tunnel != nil) {
+                    try self.tunnel?.close()
+                }
+                // open a fresh tunnel - gstreamer behaves oddly with severe artifacts the first 0.5-5 seconds if re-using exact RTSP URL (likely until an I-Frame is received)
+                self.tunnel = try conn.createTcpTunnel()
+                try self.tunnel?.open(service: "rtsp", localPort: 0)
+                self.startVideo(userPath: userPath)
+            } catch {
+                self.handleDeviceError(error)
+            }
+        }
+    }
+
     private func startVideo(userPath: String? = nil) {
         guard let tunnel = self.tunnel, let serviceInfo = self.serviceInfo, let port = try? tunnel.getLocalPort() else {
             showDeviceErrorMsg("TcpTunnel is not open, failed to start video stream!")
@@ -156,69 +214,20 @@ class EdgeDeviceViewController: ViewControllerWithDevice {
         }
     }
     
-    private func getServiceInfo(connection: Connection) throws -> ServiceInfo {
-        let request = try connection.createCoapRequest(method: "GET", path: "/tcp-tunnels/services/rtsp")
-        let response = try request.execute()
-        guard response.status == 205 else {
-            throw NabtoEdgeClientError.FAILED_WITH_DETAIL(detail: "Could not get device service info, got status \(response.status)")
-        }
-        return try ServiceInfo.decode(cbor: response.payload)
-    }
-    
-    private func startTunnelAndVideo(userPath: String? = nil) {
-        DispatchQueue.global(qos: .background).async {
-            do {
-                self.busy = true
-                let conn = try EdgeConnectionManager.shared.getConnection(self.device)
-                self.serviceInfo = try self.getServiceInfo(connection: conn)
-                if (self.tunnel != nil) {
-                    try self.tunnel?.close()
-                }
-                // open a fresh tunnel - gstreamer behaves oddly with severe artifacts the first 0.5-5 seconds if re-using exact RTSP URL ¯\_(ツ)_/¯
-                self.tunnel = try conn.createTcpTunnel()
-                try self.tunnel?.open(service: "rtsp", localPort: 0)
-                self.startVideo(userPath: userPath)
-            } catch {
-                self.handleDeviceError(error)
-            }
-        }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupVideoView()
-        videoPathTextField.autocorrectionType = .no
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        startTunnelAndVideo()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        videoViewController.pause()
-        
+    private func stopTunnelAndVideo() {
         // XXX if not stopping, gstreamer crashes when closing tunnel
-        videoViewController.stop()
-
-        try? self.tunnel?.close()
-        self.tunnel = nil
+        self.videoViewController.stop()
         self.tunnel?.closeAsync(closure: { ec in
             if (ec != NabtoEdgeClientError.OK) {
                 NSLog("Could not close tunnel: \(ec)");
             }
             self.tunnel = nil
         })
-        removeObservers()
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        addObservers()
+    
+    private func pauseVideo() {
+        self.videoViewController.pause()
     }
-
-    // MARK: - Helper Functions
 
     private func setupVideoView() {
         addChild(videoViewController)
@@ -251,7 +260,7 @@ class EdgeDeviceViewController: ViewControllerWithDevice {
     // MARK: - Reachability callbacks
 
     @objc func appMovedToBackground() {
-        videoViewController.pause()
+        stopTunnelAndVideo()
     }
     
     @objc func appWillMoveToForeground() {

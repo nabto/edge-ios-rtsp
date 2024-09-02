@@ -19,18 +19,21 @@ class VideoViewController: UIViewController, GStreamerBackendDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         let nc = NotificationCenter.default
-        nc.addObserver(
-            self,
-            selector: #selector(appMovedToBackground),
-            name: UIApplication.willResignActiveNotification,
-            object: nil
-        )
-        nc.addObserver(
-            self,
-            selector: #selector(appWillMoveToForeground),
-            name: UIApplication.willEnterForegroundNotification,
-            object: nil
-        )
+        // todo - handled both here and in parent
+//        nc.addObserver(
+//            self,
+//            selector: #selector(appMovedToBackground),
+//            name: UIApplication.willResignActiveNotification,
+//            object: nil
+//        )
+//        nc.addObserver(
+//            self,
+//            selector: #selector(appWillMoveToForeground),
+//            name: UIApplication.willEnterForegroundNotification,
+//            object: nil
+//        )
+        
+        // todo - move to parent
         nc.addObserver(
             self,
             selector: #selector(appWillResignActive),
@@ -61,16 +64,16 @@ class VideoViewController: UIViewController, GStreamerBackendDelegate
         }
     }
     
-    @objc func appMovedToBackground() {
-        gst?.pause()
-    }
-    
-    @objc func appWillMoveToForeground() {
-        if isPlayingDesired, let uri = uri {
-            setUri(uri)
-        }
-    }
-    
+//    @objc func appMovedToBackground() {
+//        gst?.pause()
+//    }
+//    
+//    @objc func appWillMoveToForeground() {
+//        if isPlayingDesired, let uri = uri {
+//            setUri(uri)
+//        }
+//    }
+//    
     func gstreamerInitialized() {
         if let uri = uri {
             gst?.setUri(uri)

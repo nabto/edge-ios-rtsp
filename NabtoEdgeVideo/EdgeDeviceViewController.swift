@@ -6,18 +6,17 @@ import NabtoEdgeIamUtil
 import OSLog
 
 class EdgeDeviceViewController: ViewControllerWithDevice {
-    private let defaultVideoPath = "/video"
     private let cborEncoder = CBOREncoder()
     private var tunnel: TcpTunnel?
     private let videoViewController = VideoViewController()
     private var serviceInfo: ServiceInfo?
+    private var rtspPath: RtspPath = RtspPath(defaultPath: "/video")
 
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var connectingView: UIView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var refreshVideoButton: UIButton!
-    @IBOutlet weak var videoPathTextField: UITextField!
     
     @IBOutlet weak var deviceIdLabel: UILabel!
     @IBOutlet weak var appNameAndVersionLabel: UILabel!
@@ -46,6 +45,15 @@ class EdgeDeviceViewController: ViewControllerWithDevice {
     
     @IBAction func detailsTapped(_ sender: Any) {
         performSegue(withIdentifier: "toDeviceDetails", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDeviceDetails" {
+            if let destination = segue.destination as? DeviceDetailsViewController {
+                destination.device = self.device
+                destination.rtspPath = self.rtspPath
+            }
+        }
     }
     
     @IBAction func goToHome(_ sender: Any) {
@@ -114,15 +122,7 @@ class EdgeDeviceViewController: ViewControllerWithDevice {
     }
     
     @IBAction func refreshVideoTap(_ sender: Any) {
-        let userPath = videoPathTextField.text ?? ""
-        let path: String
-        if userPath.isEmpty {
-            path = serviceInfo?.metadata["rtsp-path"] ?? defaultVideoPath
-        } else {
-            path = userPath
-        }
-        startTunnelAndVideo(userPath: path)
-
+        startTunnelAndVideo()
     }
     
     private func constructRtspUri(auth: String, port: UInt16, path: String) -> String {
@@ -145,11 +145,12 @@ class EdgeDeviceViewController: ViewControllerWithDevice {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupVideoView()
-        videoPathTextField.autocorrectionType = .no
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.rtspPath.device = self.device
+        navigationItem.title = self.device?.name ?? "Video Device"
         startTunnelAndVideo()
     }
 
@@ -171,27 +172,27 @@ class EdgeDeviceViewController: ViewControllerWithDevice {
     }
 
     // MARK: - Helper Functions
-    
-    private func startTunnelAndVideo(userPath: String? = nil) {
+    private func startTunnelAndVideo() {
         DispatchQueue.global(qos: .background).async {
             do {
                 self.busy = true
                 let conn = try EdgeConnectionManager.shared.getConnection(self.device)
                 self.serviceInfo = try self.getServiceInfo(connection: conn)
+                self.rtspPath.serviceInfo = self.serviceInfo
                 if (self.tunnel != nil) {
                     try self.tunnel?.close()
                 }
                 // open a fresh tunnel - gstreamer behaves oddly with severe artifacts the first 0.5-5 seconds if re-using exact RTSP URL (likely until an I-Frame is received)
                 self.tunnel = try conn.createTcpTunnel()
                 try self.tunnel?.open(service: "rtsp", localPort: 0)
-                self.startVideo(userPath: userPath)
+                self.startVideo()
             } catch {
                 self.handleDeviceError(error)
             }
         }
     }
 
-    private func startVideo(userPath: String? = nil) {
+    private func startVideo() {
         guard let tunnel = self.tunnel, let serviceInfo = self.serviceInfo, let port = try? tunnel.getLocalPort() else {
             showDeviceErrorMsg("TcpTunnel is not open, failed to start video stream!")
             DispatchQueue.main.async {
@@ -200,7 +201,7 @@ class EdgeDeviceViewController: ViewControllerWithDevice {
             return
         }
         
-        let path = userPath ?? serviceInfo.metadata["rtsp-path"] ?? defaultVideoPath
+        let path = self.rtspPath.getPath()
         let username = serviceInfo.metadata["rtsp-username"] ?? ""
         let password = serviceInfo.metadata["rtsp-password"] ?? ""
         let auth = username.isEmpty ? "" : "\(username):\(password)@"
@@ -208,7 +209,6 @@ class EdgeDeviceViewController: ViewControllerWithDevice {
         let uri = constructRtspUri(auth: auth, port: port, path: path)
         DispatchQueue.main.async {
             self.busy = false
-            self.videoPathTextField.text = path
             self.videoViewController.setUri(uri)
             self.videoViewController.play()
         }

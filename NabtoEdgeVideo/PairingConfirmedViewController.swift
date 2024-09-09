@@ -57,12 +57,6 @@ class PairingConfirmedViewController: ViewControllerWithDevice, UITextFieldDeleg
             if (name.count > 0) {
                 self.device.name = name
                 self.pairingConfirmedDelegate?.pairingConfirmed()
-                do {
-                    try BookmarkManager.shared.add(bookmark: self.device)
-                } catch {
-                    let banner = GrowingNotificationBanner(title: "Error", subtitle: "Could not add bookmark: \(error)")
-                    banner.show()
-                }
                 dismiss(animated: true, completion: nil)
             }
         }

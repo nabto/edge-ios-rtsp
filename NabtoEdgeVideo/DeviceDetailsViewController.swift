@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 // You should subclass this controller to implement custom devices.
 // More info on StoryboardHelper.swift
@@ -17,11 +18,32 @@ class ViewControllerWithDevice: UIViewController {
 
 class DeviceDetailsViewController: ViewControllerWithDevice {
     
+    var rtspPath: RtspPath?
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var pathTextField: UITextField!
     @IBOutlet weak var deviceIdLabel: UILabel!
     @IBOutlet weak var productIdLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var pathActualLabel: UILabel!
+    @IBOutlet weak var pathDeviceLabel: UILabel!
+    
+    @IBAction func saveTapped(_ sender: Any) {
+        if let text = nameTextField.text, !text.isEmpty {
+            self.device.name = text
+        }
+        if let path = pathTextField.text, !path.isEmpty{
+            self.device.rtspPath = path
+        }
+        updateView()
+        do {
+            try BookmarkManager.shared.saveBookmarks()
+        } catch {
+            let banner = GrowingNotificationBanner(title: "Error", subtitle: "Could not update bookmark: \(error)", style: .danger)
+            banner.show()
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +51,24 @@ class DeviceDetailsViewController: ViewControllerWithDevice {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.updateView()
+    }
+    
+    private func updateView() {
+        navigationItem.title = device?.name ?? ""
+        nameTextField.text = device?.name ?? ""
+        nameTextField.autocorrectionType = .no
+        pathTextField.text = device?.rtspPath ?? ""
+        pathTextField.autocorrectionType = .no
+        deviceIdLabel.text = device?.deviceId ?? ""
+        productIdLabel.text = device?.productId ?? ""
+        nameLabel.text = device?.name ?? ""
+        pathDeviceLabel.text = rtspPath?.devicePath() ?? "(not set)"
+        pathActualLabel.text = rtspPath?.getPath()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationItem.title = device?.name ?? ""
-        nameTextField.text = device?.name ?? ""
-        pathTextField.text = "/\(device?.name ?? "(no name)")"
-        deviceIdLabel.text = device?.deviceId ?? ""
-        productIdLabel.text = device?.productId ?? ""
-        nameLabel.text = device?.name ?? ""
     }
 
     override func didReceiveMemoryWarning() {

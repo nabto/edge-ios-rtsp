@@ -97,9 +97,6 @@ class DiscoverViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let device = sender as? Bookmark else { return }
         
-        if let destination = segue.destination as? PairingViewController {
-            destination.device = device
-        }
     }
     
     @IBAction func refresh(_ sender: Any) {

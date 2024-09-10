@@ -161,6 +161,7 @@ class EdgeDeviceViewController: ViewControllerWithDevice {
             stopTunnelAndVideo()
         } else {
             pauseVideo()
+            self.navigationItem.backButtonTitle = "Back"
         }
 
         removeObservers()

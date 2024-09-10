@@ -23,17 +23,19 @@ class RtspPath {
     
     func getPath() -> String {
         let bookmarkPath = device?.rtspPath ?? ""
-        let path: String
-        if bookmarkPath.isEmpty {
-            if let devicePath = devicePath() {
-                path = devicePath
-            } else {
-                path = defaultPath
-            }
+        if (!bookmarkPath.isEmpty) {
+            return bookmarkPath
         } else {
-            path = bookmarkPath
+            return getNonUserPath()
         }
-        return path
+    }
+    
+    func getNonUserPath() -> String {
+        if let devicePath = devicePath() {
+            return devicePath
+        } else {
+            return defaultPath
+        }
     }
 
 }

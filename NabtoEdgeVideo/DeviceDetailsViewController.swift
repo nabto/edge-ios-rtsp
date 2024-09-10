@@ -16,7 +16,7 @@ class ViewControllerWithDevice: UIViewController {
     var device : Bookmark!
 }
 
-class DeviceDetailsViewController: ViewControllerWithDevice {
+class DeviceDetailsViewController: ViewControllerWithDevice, UITextFieldDelegate {
     
     var rtspPath: RtspPath?
     
@@ -32,10 +32,12 @@ class DeviceDetailsViewController: ViewControllerWithDevice {
         if let text = nameTextField.text, !text.isEmpty {
             self.device.name = text
         }
-        if let path = pathTextField.text, !path.isEmpty{
+        if let path = pathTextField.text {
             self.device.rtspPath = path
         }
         updateView()
+        nameTextField.resignFirstResponder()
+        pathTextField.resignFirstResponder()
         do {
             try BookmarkManager.shared.saveBookmarks()
         } catch {
@@ -47,15 +49,36 @@ class DeviceDetailsViewController: ViewControllerWithDevice {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.pathTextField.addTarget(self, action: #selector(pathTextFieldDidChange), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.updateView()
     }
+
+    @objc func pathTextFieldDidChange(_ textField: UITextField) {
+        updatePlaceHolderText()
+    }
+    
+    func getPlaceHolderText() -> String {
+        let prefix = "Enter path"
+        if let rtspPath = self.rtspPath {
+            return "\(prefix) (default is \"\(rtspPath.getNonUserPath())\")"
+        } else {
+            return prefix
+        }
+    }
+    
+    func updatePlaceHolderText() {
+        if (self.pathTextField.text?.isEmpty ?? true) {
+            self.pathTextField.placeholder = self.getPlaceHolderText()
+        }
+    }
     
     private func updateView() {
         navigationItem.title = device?.name ?? ""
+        updatePlaceHolderText()
         nameTextField.text = device?.name ?? ""
         nameTextField.autocorrectionType = .no
         pathTextField.text = device?.rtspPath ?? ""

@@ -1,5 +1,6 @@
 #import "GStreamerBackend.h"
 
+#include "GStreamerBackendError.h"
 #include <gst/gst.h>
 #include <gst/video/video.h>
 
@@ -104,13 +105,29 @@ static void pipeline_source_setup_callback(GstBus* bus, GstElement* source, GStr
     }
 }
 
+static GstBackendError mapToBackendError(GError* err) {
+    if (err->domain != 6003) {
+        return GstWrongDomain;
+    }
+    switch (err->code) {
+        case GST_RESOURCE_ERROR_NOT_FOUND: return GstNotFound;
+        case GST_RESOURCE_ERROR_NOT_AUTHORIZED: return GstNotAuthorized;
+        default: return GstOther;
+    }
+}
+
 static void error_callback(GstBus* bus, GstMessage* msg, GStreamerBackend* self)
 {
     GError* err;
     gchar* debug_info;
     
     gst_message_parse_error(msg, &err, &debug_info);
-    GST_DEBUG("Error received from Gst element %s: %s", GST_OBJECT_NAME(msg->src), err->message);
+    GST_DEBUG("Error received from Gst element %s: %s [%d<%s>:%d]", GST_OBJECT_NAME(msg->src), err->message, err->domain, g_quark_to_string(err->domain), err->code);
+    if (self->ui_delegate && [self->ui_delegate respondsToSelector:@selector(onError:message:)])
+    {
+        NSString *msg = [NSString stringWithUTF8String:err->message];
+        [self->ui_delegate onError:mapToBackendError(err) message:msg];
+    }
     g_clear_error(&err);
     g_free(debug_info);
     gst_element_set_state(self->pipeline, GST_STATE_NULL);
@@ -153,10 +170,18 @@ static void buffering_callback(GstBus* bus, GstMessage* msg, GStreamerBackend* s
     {
         GST_DEBUG("Buffering %d%%", percent);
         gst_element_set_state(self->pipeline, GST_STATE_PAUSED);
+        if (self->ui_delegate && [self->ui_delegate respondsToSelector:@selector(onBuffering)])
+        {
+            [self->ui_delegate onBuffering];
+        }
     }
     else if (self->target_state >= GST_STATE_PLAYING)
     {
         gst_element_set_state(self->pipeline, GST_STATE_PLAYING);
+        if (self->ui_delegate && [self->ui_delegate respondsToSelector:@selector(onBufferingDone)])
+        {
+            [self->ui_delegate onBufferingDone];
+        }
     }
 }
 
@@ -165,9 +190,9 @@ static void buffering_callback(GstBus* bus, GstMessage* msg, GStreamerBackend* s
     if (!initialized && main_loop)
     {
         GST_DEBUG("Initialization complete, notifying application.");
-        if (ui_delegate && [ui_delegate respondsToSelector:@selector(gstreamerInitialized)])
+        if (ui_delegate && [ui_delegate respondsToSelector:@selector(onInitialized)])
         {
-            [ui_delegate gstreamerInitialized];
+            [ui_delegate onInitialized];
         }
         initialized = TRUE;
     }

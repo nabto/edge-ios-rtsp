@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import NotificationBannerSwift
+
 
 class VideoViewController: UIViewController, GStreamerBackendDelegate
 {
@@ -15,7 +17,8 @@ class VideoViewController: UIViewController, GStreamerBackendDelegate
     private var gst: GStreamerBackend?
     private var uri: String?
     private var isPlayingDesired = false
-    
+    private var banner: GrowingNotificationBanner?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let nc = NotificationCenter.default
@@ -74,11 +77,33 @@ class VideoViewController: UIViewController, GStreamerBackendDelegate
 //        }
 //    }
 //    
-    func gstreamerInitialized() {
+    func onInitialized() {
         if let uri = uri {
             gst?.setUri(uri)
             gst?.play()
         }
+    }
+    
+    func getMessage(_ errorCode: GstBackendError, _ message: String) -> String {
+        switch (errorCode) {
+        case .notFound: return "Invalid RTSP path - fix on details page"
+        case .notAuthorized: return "Unauthorized - missing credentials?"
+        default: return message
+        }
+    }
+    
+    func onError(_ errorCode: GstBackendError, message: String) {
+        DispatchQueue.main.async {
+            self.banner?.dismiss()
+            self.banner = GrowingNotificationBanner(title: "Error playing RTSP video stream", subtitle: self.getMessage(errorCode, message), style: .danger)
+            self.banner?.show()
+        }
+
+        print("GST ERROR OCCURRED: code=[\(errorCode)], message=[\(message)]")
+    }
+    
+    @objc func onBuffering() {
+        print("GST BUFFERING")
     }
     
     func pause() {

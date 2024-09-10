@@ -122,6 +122,7 @@
 		8AC09F744A08DDB5C556243A /* Pods-Nabto Edge Video.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nabto Edge Video.release.xcconfig"; path = "Target Support Files/Pods-Nabto Edge Video/Pods-Nabto Edge Video.release.xcconfig"; sourceTree = "<group>"; };
 		CC1E2B4C8FFDFF46300D1A67 /* Pods_Nabto_Edge_Video.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nabto_Edge_Video.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D425AAAC2C8F947D00CDCD89 /* RtspPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RtspPath.swift; sourceTree = "<group>"; };
+		D425AAAF2C9068BA00CDCD89 /* GStreamerBackendError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GStreamerBackendError.h; sourceTree = "<group>"; };
 		D455B17B28A51AA90011FD72 /* PairingConfirmedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingConfirmedViewController.swift; sourceTree = "<group>"; };
 		D92CAACD2C0780E34FCC36E6 /* Pods-NabtoEdgeVideoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NabtoEdgeVideoTests.release.xcconfig"; path = "Target Support Files/Pods-NabtoEdgeVideoTests/Pods-NabtoEdgeVideoTests.release.xcconfig"; sourceTree = "<group>"; };
 		E035B3E47336C0732A412330 /* Pods_NabtoEdgeVideoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NabtoEdgeVideoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +202,7 @@
 				6D04A6DA1E3F4C4800DD9F70 /* AppDelegate.swift */,
 				6D04A6DE1E3F4C4800DD9F70 /* Main.storyboard */,
 				6D04A7051E3F51EB00DD9F70 /* Supporting files */,
+				D425AAAF2C9068BA00CDCD89 /* GStreamerBackendError.h */,
 			);
 			path = NabtoEdgeVideo;
 			sourceTree = "<group>";

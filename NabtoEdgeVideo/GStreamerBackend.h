@@ -1,3 +1,6 @@
+#ifndef _gstreamer_backend_h
+#define _gstreamer_backend_h
+
 #import <Foundation/Foundation.h>
 #import "GStreamerBackendDelegate.h"
 #import <UIKit/UIKit.h>
@@ -30,3 +33,5 @@ typedef enum GstRTSPLowerTrans
 -(void)setUri:(NSString*)uri;
 
 @end
+
+#endif

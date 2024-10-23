@@ -12,8 +12,8 @@ platform :ios, '12.0'
 
 def common
   use_frameworks!
-  pod 'NabtoEdgeClientSwift', '3.2.0'
-  pod 'NabtoEdgeIamUtil', '1.0.2'
+  pod 'NabtoEdgeClientSwift', '3.3.0'
+  pod 'NabtoEdgeIamUtil', '1.1.1'
   pod 'NotificationBannerSwift', '~> 3.0.0'
   pod 'IQKeyboardManagerSwift'
 end

@@ -39,7 +39,8 @@ GST_DEBUG_CATEGORY(debug_category);
         
         GST_DEBUG_CATEGORY_INIT(debug_category, "TunnelVideo", 0, "iOS Tunnel Video");
         gst_debug_set_threshold_for_name("TunnelVideo", GST_LEVEL_DEBUG);
-        
+        gst_debug_set_threshold_for_name("caps", GST_LEVEL_DEBUG);
+
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [self app_main];
         });

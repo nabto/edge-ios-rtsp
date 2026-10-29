@@ -1,5 +1,7 @@
 # Native iOS Nabto Edge Video Control App
 
+> **This repository is archived and no longer maintained.**
+
 Full example application showing how to display an RTSP stream from a Nabto Edge enabled device using the Nabto Edge Client SDK for iOS.
 
 Precompiled version is not yet available.
